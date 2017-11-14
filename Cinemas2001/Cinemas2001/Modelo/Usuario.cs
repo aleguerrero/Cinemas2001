@@ -14,6 +14,7 @@ namespace Cinemas2001.Modelo
     
     public partial class Usuario
     {
+        public string Username { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public string Contraseña { get; set; }
