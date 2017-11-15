@@ -40,7 +40,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(112, 39);
+            this.label1.Location = new System.Drawing.Point(113, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 26);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(81, 91);
+            this.label2.Location = new System.Drawing.Point(82, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
@@ -57,22 +57,23 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(140, 88);
+            this.txtUser.Location = new System.Drawing.Point(141, 88);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(150, 20);
             this.txtUser.TabIndex = 2;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(140, 134);
+            this.txtPass.Location = new System.Drawing.Point(141, 134);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(150, 20);
             this.txtPass.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(82, 137);
+            this.label3.Location = new System.Drawing.Point(83, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 3;
@@ -80,7 +81,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(146, 174);
+            this.btnLogin.Location = new System.Drawing.Point(147, 174);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(81, 23);
             this.btnLogin.TabIndex = 5;
