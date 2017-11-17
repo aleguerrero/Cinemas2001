@@ -24,5 +24,6 @@ namespace Cinemas2001.Logica_Negocio
             sUsuario.Apellidos = iUsuario.Apellidos;
             return sUsuario;
         }
+        //Comentario de Prueba_Daniel
     }
 }
