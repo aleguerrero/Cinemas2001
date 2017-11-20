@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cinemas2001.Modelo;
+using System.Windows.Forms;
 
 namespace Cinemas2001.Acceso_Datos
 {
@@ -24,6 +25,25 @@ namespace Cinemas2001.Acceso_Datos
                 }
             }
             return sUsuario;
+        }
+
+        public Boolean fn_registro_usuario(Usuario pUsuario)
+        {
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    contexto.Usuarios.Add(pUsuario);
+                    contexto.Database.Connection.Close();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error en registro, error: " + e.Message) ;
+                    return false;
+                }
+            }
         }
     }
 }

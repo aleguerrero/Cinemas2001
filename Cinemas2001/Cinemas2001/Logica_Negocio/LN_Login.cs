@@ -24,6 +24,19 @@ namespace Cinemas2001.Logica_Negocio
             sUsuario.Apellidos = iUsuario.Apellidos;
             return sUsuario;
         }
-        //Comentario de Prueba_Daniel
+
+        public Boolean fn_Registro_Usuario(MO_Usuario pUsuario)
+        {
+            Usuario iUsuario = new Usuario();
+            iUsuario.Username = pUsuario.Username;
+            iUsuario.Nombre = pUsuario.Nombre;
+            iUsuario.Apellidos = pUsuario.Apellidos;
+            iUsuario.DNI = pUsuario.Dni;
+            iUsuario.Fecha_de_Nacimiento = pUsuario.FechaDeNacimiento;
+            iUsuario.Contraseña = pUsuario.Contrasena;
+
+            return iAccesoDatos.fn_registro_usuario(iUsuario);
+        }
+        
     }
 }
