@@ -82,7 +82,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\MO_Asiento.cs" />
+    <Compile Include="Modelo\MO_Categoria.cs" />
+    <Compile Include="Modelo\MO_Director.cs" />
+    <Compile Include="Modelo\MO_Estudio.cs" />
+    <Compile Include="Modelo\MO_Sede.cs" />
+    <Compile Include="Modelo\MO_Tarjeta_Credito.cs" />
     <Compile Include="Modelo\MO_Usuario.cs" />
+    <Compile Include="Modelo\MO_Ticket.cs" />
+    <Compile Include="Modelo\MO_Sala.cs" />
+    <Compile Include="Modelo\MO_Pelicula.cs" />
     <Compile Include="Modelo\Usuario.cs">
       <DependentUpon>Cinemas2001Model.tt</DependentUpon>
     </Compile>

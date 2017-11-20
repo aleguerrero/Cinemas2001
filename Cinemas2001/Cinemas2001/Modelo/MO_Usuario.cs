@@ -12,6 +12,18 @@ namespace Cinemas2001.Modelo
         private int dni;
         private DateTime fechaDeNacimiento;
 
+        public MO_Usuario() { }
+
+        public MO_Usuario(string username, string nombre, string apellidos, string contrasena, int dni, DateTime fechaDeNacimiento)
+        {
+            this.Username = username;
+            this.Nombre = nombre;
+            this.Apellidos = apellidos;
+            this.Contrasena = contrasena;
+            this.Dni = dni;
+            this.FechaDeNacimiento = fechaDeNacimiento;
+        }
+
         public string Username { get => username; set => username = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellidos { get => apellidos; set => apellidos = value; }
