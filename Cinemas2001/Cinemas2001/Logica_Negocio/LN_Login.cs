@@ -16,7 +16,7 @@ namespace Cinemas2001.Logica_Negocio
         {
             Usuario iUsuario = new Usuario();
             iUsuario.Username = pUsuario.Username;
-            iUsuario.Contraseña = pUsuario.Contrasena;
+            iUsuario.Password = pUsuario.Contrasena;
 
             iUsuario = iAccesoDatos.fn_Login(iUsuario);
             MO_Usuario sUsuario = new MO_Usuario();
@@ -32,8 +32,8 @@ namespace Cinemas2001.Logica_Negocio
             iUsuario.Nombre = pUsuario.Nombre;
             iUsuario.Apellidos = pUsuario.Apellidos;
             iUsuario.DNI = pUsuario.Dni;
-            iUsuario.Fecha_de_Nacimiento = pUsuario.FechaDeNacimiento;
-            iUsuario.Contraseña = pUsuario.Contrasena;
+            iUsuario.Fecha_Nacimiento = pUsuario.FechaDeNacimiento;
+            iUsuario.Password = pUsuario.Contrasena;
 
             return iAccesoDatos.fn_registro_usuario(iUsuario);
         }

@@ -18,7 +18,7 @@ namespace Cinemas2001.Acceso_Datos
                 try
                 {
                     contexto.Database.Connection.Open();
-                    sUsuario = contexto.Usuarios.Where(cL => cL.Username == pUsuario.Username && cL.Contraseña == pUsuario.Contraseña).First();
+                    sUsuario = contexto.Usuarios.Where(cL => cL.Username == pUsuario.Username && cL.Password == pUsuario.Password).First();
                 } catch (Exception e)
                 {
 

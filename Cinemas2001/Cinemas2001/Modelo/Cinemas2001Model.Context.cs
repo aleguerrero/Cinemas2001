@@ -25,6 +25,14 @@ namespace Cinemas2001.Modelo
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Asiento> Asientoes { get; set; }
+        public virtual DbSet<Horario> Horarios { get; set; }
+        public virtual DbSet<Pelicula> Peliculas { get; set; }
+        public virtual DbSet<Sala> Salas { get; set; }
+        public virtual DbSet<Sede> Sedes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Tarjeta_Credito> Tarjeta_Credito { get; set; }
+        public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

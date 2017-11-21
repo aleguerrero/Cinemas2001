@@ -4,8 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d54fc5c42d3e4cda83f0837cc82880af" Name="Diagram1">
-        <EntityTypeShape EntityType="Cinemas2001Model.Usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="767ff5863a384b9396774bc138685d4b" Name="Diagram1">
+        <EntityTypeShape EntityType="Cinemas2001Model.Asiento" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Horario" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Pelicula" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Sala" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Sede" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.sysdiagram" Width="1.5" PointX="7.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Tarjeta_Credito" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Ticket" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Usuario" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Asiento_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Horario_Pelicula" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Horario_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Ticket_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Sala_Sede" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Tarjeta_Credito_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Ticket_Usuario" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
