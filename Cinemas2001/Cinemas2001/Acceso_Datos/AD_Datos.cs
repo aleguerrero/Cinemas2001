@@ -45,5 +45,23 @@ namespace Cinemas2001.Acceso_Datos
                 }
             }
         }
+
+        public Usuario fn_Usuario_Sesion(Usuario pUsuario)
+        {
+            Usuario sUsuario = new Usuario();
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    sUsuario = contexto.Usuarios.Where(cL => cL.Username == pUsuario.Username && cL.Password == pUsuario.Password).First();
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            return sUsuario;
+        }
     }
 }
