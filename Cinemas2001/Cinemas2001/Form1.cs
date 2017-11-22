@@ -55,5 +55,6 @@ namespace Cinemas2001
                 MessageBox.Show("Registro NO completado\n\n--Intentalo de Nuevo--");
             }
         }
+
     }
 }

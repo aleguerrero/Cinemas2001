@@ -35,7 +35,7 @@ namespace Cinemas2001.Acceso_Datos
                 {
                     contexto.Database.Connection.Open();
                     contexto.Usuarios.Add(pUsuario);
-                    contexto.Database.Connection.Close();
+                    contexto.SaveChanges();
                     return true;
                 }
                 catch (Exception e)

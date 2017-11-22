@@ -10,9 +10,9 @@
         <EntityTypeShape EntityType="Cinemas2001Model.Pelicula" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Cinemas2001Model.Sala" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="Cinemas2001Model.Sede" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.sysdiagram" Width="1.5" PointX="7.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Tarjeta_Credito" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Ticket" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.sysdiagram" Width="1.5" PointX="12.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Tarjeta_Credito" Width="1.5" PointX="10.125" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Ticket" Width="1.5" PointX="7.625" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Cinemas2001Model.Usuario" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="Cinemas2001Model.FK_Asiento_Sala" ManuallyRouted="false" />
         <AssociationConnector Association="Cinemas2001Model.FK_Horario_Pelicula" ManuallyRouted="false" />
