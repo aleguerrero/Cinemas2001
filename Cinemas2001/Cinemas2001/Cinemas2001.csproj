@@ -55,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acceso_Datos\AD_Datos.cs" />
+    <Compile Include="CambiarContrasenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambiarContrasenha.Designer.cs">
+      <DependentUpon>CambiarContrasenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CambiarContrasenha.resx">
+      <DependentUpon>CambiarContrasenha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -59,6 +59,20 @@ namespace Cinemas2001.Logica_Negocio
 
             return sUsuario;
         }
+
+        public Boolean fn_Cambiar_Password(string pPassAnt, string pPassNueva)
+        {
+            if (pPassAnt == VPassword)
+            {
+                Usuario iUsuario = new Usuario();
+                iUsuario.Password = VPassword;
+                iUsuario.Username = VUsername;
+                return iAccesoDatos.fn_Cambiar_Password(iUsuario, pPassNueva);
+            } else
+            {
+                return false;
+            }
+        }
         
     }
 }

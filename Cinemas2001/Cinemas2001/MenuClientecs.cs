@@ -29,5 +29,13 @@ namespace Cinemas2001
             this.lblDNI.Text = Convert.ToString(cUsuario.Dni);
             this.lblUsername.Text = cUsuario.Username;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CambiarContrasenha cc = new CambiarContrasenha();
+            cc.ShowDialog();
+            this.Close();
+        }
     }
 }

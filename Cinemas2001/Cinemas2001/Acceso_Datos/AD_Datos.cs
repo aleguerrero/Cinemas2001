@@ -63,5 +63,26 @@ namespace Cinemas2001.Acceso_Datos
             }
             return sUsuario;
         }
+
+        public Boolean fn_Cambiar_Password(Usuario pUsuario, string pNuevaPass)
+        {
+            Usuario sUsuario = new Usuario();
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    sUsuario = contexto.Usuarios.Where(cL => cL.Username == pUsuario.Username && cL.Password == pUsuario.Password).First();
+                    sUsuario.Password = pNuevaPass;
+                    contexto.Entry(sUsuario).State = System.Data.Entity.EntityState.Modified;
+                    contexto.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
