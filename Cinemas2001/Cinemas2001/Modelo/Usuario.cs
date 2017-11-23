@@ -17,8 +17,8 @@ namespace Cinemas2001.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
-            this.Tarjeta_Credito = new HashSet<Tarjeta_Credito>();
-            this.Tickets = new HashSet<Ticket>();
+            this.Tarjeta_Credito = new ObservableListSource<Tarjeta_Credito>();
+            this.Tickets = new ObservableListSource<Ticket>();
         }
     
         public string Nombre { get; set; }
@@ -29,8 +29,8 @@ namespace Cinemas2001.Modelo
         public string Username { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tarjeta_Credito> Tarjeta_Credito { get; set; }
+        public virtual ObservableListSource<Tarjeta_Credito> Tarjeta_Credito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ObservableListSource<Ticket> Tickets { get; set; }
     }
 }

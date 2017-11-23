@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Cinemas2001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Cinemas2001Entites.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Asiento">
           <Key>
             <PropertyRef Name="ID" />
@@ -169,7 +169,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Cinemas2001ModelStoreContainer">
+        <EntityContainer Name="Cinemas2001EntitesStoreContainer">
           <EntitySet Name="Asiento" EntityType="Self.Asiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pelicula" EntityType="Self.Pelicula" Schema="dbo" store:Type="Tables" />
@@ -212,7 +212,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Cinemas2001Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Cinemas2001Entites" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Asiento">
           <Key>
             <PropertyRef Name="ID" />
@@ -435,9 +435,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Cinemas2001ModelStoreContainer" CdmEntityContainer="Cinemas2001Entities">
+        <EntityContainerMapping StorageEntityContainer="Cinemas2001EntitesStoreContainer" CdmEntityContainer="Cinemas2001Entities">
           <EntitySetMapping Name="Asientoes">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Asiento">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Asiento">
               <MappingFragment StoreEntitySet="Asiento">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
@@ -446,7 +446,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Horarios">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Horario">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Horario">
               <MappingFragment StoreEntitySet="Horario">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_pelicula" ColumnName="id_pelicula" />
@@ -456,7 +456,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Peliculas">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Pelicula">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Pelicula">
               <MappingFragment StoreEntitySet="Pelicula">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -469,7 +469,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Salas">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Sala">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Sala">
               <MappingFragment StoreEntitySet="Sala">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Sede" ColumnName="ID_Sede" />
@@ -477,7 +477,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sedes">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Sede">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Sede">
               <MappingFragment StoreEntitySet="Sede">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -485,7 +485,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Cinemas2001Model.sysdiagram">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -496,7 +496,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tarjeta_Credito">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Tarjeta_Credito">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Tarjeta_Credito">
               <MappingFragment StoreEntitySet="Tarjeta_Credito">
                 <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
                 <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
@@ -505,7 +505,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tickets">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Ticket">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
@@ -514,7 +514,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="Cinemas2001Model.Usuario">
+            <EntityTypeMapping TypeName="Cinemas2001Entites.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />

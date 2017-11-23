@@ -11,6 +11,7 @@ namespace Cinemas2001.Modelo
         private String username, nombre, apellidos, contrasena;
         private int dni;
         private DateTime fechaDeNacimiento;
+        private readonly ObservableListSource<Tarjeta_Credito> lTarjetas = new ObservableListSource<Tarjeta_Credito>();
 
         public MO_Usuario() { }
 
@@ -30,5 +31,7 @@ namespace Cinemas2001.Modelo
         public string Contrasena { get => contrasena; set => contrasena = value; }
         public int Dni { get => dni; set => dni = value; }
         public DateTime FechaDeNacimiento { get => fechaDeNacimiento; set => fechaDeNacimiento = value; }
+
+        public ObservableListSource<Tarjeta_Credito> LTarjetas => lTarjetas;
     }
 }

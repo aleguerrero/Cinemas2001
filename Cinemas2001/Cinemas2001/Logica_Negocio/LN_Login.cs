@@ -67,6 +67,7 @@ namespace Cinemas2001.Logica_Negocio
                 Usuario iUsuario = new Usuario();
                 iUsuario.Password = VPassword;
                 iUsuario.Username = VUsername;
+                VPassword = pPassNueva;
                 return iAccesoDatos.fn_Cambiar_Password(iUsuario, pPassNueva);
             } else
             {

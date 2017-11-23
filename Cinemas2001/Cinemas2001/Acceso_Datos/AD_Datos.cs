@@ -84,5 +84,26 @@ namespace Cinemas2001.Acceso_Datos
                 }
             }
         }
+
+        public List<Tarjeta_Credito> fn_Consultar_Tarjetas(Usuario pUsuario)
+        {
+            List<Tarjeta_Credito> vTarjetasC = new List<Tarjeta_Credito>();
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    vTarjetasC = contexto.Tarjeta_Credito.Where(cL => cL.Username == pUsuario.Username && cL.Password == pUsuario.Password).First();
+                    sUsuario.Password = pNuevaPass;
+                    contexto.Entry(sUsuario).State = System.Data.Entity.EntityState.Modified;
+                    contexto.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

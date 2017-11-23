@@ -30,11 +30,27 @@ namespace Cinemas2001
             this.lblUsername.Text = cUsuario.Username;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCambiarPass_Click(object sender, EventArgs e)
         {
             this.Hide();
             CambiarContrasenha cc = new CambiarContrasenha();
             cc.ShowDialog();
+            this.Close();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MenuPrincipal mp = new MenuPrincipal();
+            mp.ShowDialog();
+            this.Close();
+        }
+
+        private void btnTarjetas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TarjetasForm tf = new TarjetasForm();
+            tf.ShowDialog();
             this.Close();
         }
     }

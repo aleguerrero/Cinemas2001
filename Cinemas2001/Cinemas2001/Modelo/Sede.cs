@@ -17,13 +17,13 @@ namespace Cinemas2001.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sede()
         {
-            this.Salas = new HashSet<Sala>();
+            this.Salas = new ObservableListSource<Sala>();
         }
     
         public string ID { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sala> Salas { get; set; }
+        public virtual ObservableListSource<Sala> Salas { get; set; }
     }
 }
