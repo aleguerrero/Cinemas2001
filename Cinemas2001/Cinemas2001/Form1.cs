@@ -29,11 +29,11 @@ namespace Cinemas2001
             MO_Usuario iUsuario = iLn_Login.fn_LoginUsuario(oUsuario);
             if (iUsuario.Nombre != null)
             {
-                MessageBox.Show("Bienvenido " + iUsuario.Nombre + " " + iUsuario.Apellidos, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MenuPrincipal ventana = new MenuPrincipal();
-                
+                MenuPrincipal ventana = new MenuPrincipal(iUsuario.Nombre);
+                ventana.Closed += (sender1, args) => this.Close();
                 ventana.Show();
-                this.Hide();              
+                this.Hide();
+                // ↑ esto es para cargar el siguiente form y darle como la capacidad de cerrar el programa, de otra forma no lo logra.
 
             } else
             {
