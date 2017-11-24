@@ -93,14 +93,30 @@ namespace Cinemas2001.Acceso_Datos
                 try
                 {
                     contexto.Database.Connection.Open();
-                    vTarjetasC = contexto.Tarjeta_Credito.Where(cL => cL.Username == pUsuario.Username && cL.Password == pUsuario.Password).First();
-                    sUsuario.Password = pNuevaPass;
-                    contexto.Entry(sUsuario).State = System.Data.Entity.EntityState.Modified;
+                    vTarjetasC = contexto.Tarjeta_Credito.Where(cL => cL.ID_Usuario == pUsuario.DNI).ToList();
+                    return vTarjetasC;
+                }
+                catch (Exception e)
+                {
+                    return null;   
+                }
+            }
+        }
+
+        public Boolean fn_Agregar_Tarjeta(Tarjeta_Credito pTarjeta)
+        {
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    contexto.Tarjeta_Credito.Add(pTarjeta);
                     contexto.SaveChanges();
                     return true;
                 }
                 catch (Exception e)
                 {
+                    MessageBox.Show("Error en registro, error: " + e.Message);
                     return false;
                 }
             }

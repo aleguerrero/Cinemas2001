@@ -55,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acceso_Datos\AD_Datos.cs" />
+    <Compile Include="Agregar Tarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregar Tarjeta.Designer.cs">
+      <DependentUpon>Agregar Tarjeta.cs</DependentUpon>
+    </Compile>
     <Compile Include="CambiarContrasenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     <Compile Include="TarjetasForm.Designer.cs">
       <DependentUpon>TarjetasForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Agregar Tarjeta.resx">
+      <DependentUpon>Agregar Tarjeta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CambiarContrasenha.resx">
       <DependentUpon>CambiarContrasenha.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,10 +176,6 @@
     <EmbeddedResource Include="TarjetasForm.resx">
       <DependentUpon>TarjetasForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Modelo\Cinemas2001Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Cinemas2001Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="CineDataSet.xsc">
       <DependentUpon>CineDataSet.xsd</DependentUpon>
     </None>
@@ -182,6 +187,10 @@
     <None Include="CineDataSet.xss">
       <DependentUpon>CineDataSet.xsd</DependentUpon>
     </None>
+    <EntityDeploy Include="Modelo\Cinemas2001Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Cinemas2001Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Modelo\Cinemas2001Model.edmx.diagram">
       <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
     </None>

@@ -9,7 +9,7 @@ namespace Cinemas2001.Modelo
     class MO_Tarjeta_Credito
     {
         private int numero_Tarjeta, id_Usuario, cvo;
-        private virtual Usuario vUsuario;
+        private Usuario vUsuario;
 
         public MO_Tarjeta_Credito() { }
 

@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cinemas2001.Logica_Negocio;
+using Cinemas2001.Modelo;
 
 namespace Cinemas2001
 {
     public partial class TarjetasForm : Form
     {
+        LN_Login iLogica_Negocio = new LN_Login();
         public TarjetasForm()
         {
             InitializeComponent();
@@ -19,11 +22,21 @@ namespace Cinemas2001
 
         private void TarjetasForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'cineDataSet.Tarjeta_Credito' table. You can move, or remove it, as needed.
-            this.tarjeta_CreditoTableAdapter.Fill(this.cineDataSet.Tarjeta_Credito);
-            // TODO: This line of code loads data into the 'cineDataSet.Ticket' table. You can move, or remove it, as needed.
-            this.ticketTableAdapter.Fill(this.cineDataSet.Ticket);
+            tbTarjetasC.DataSource = iLogica_Negocio.fn_Consultar_Tarjetas();
         }
 
+        private void btnAtrasT_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuClientecs().ShowDialog();
+            this.Close();
+        }
+
+        private void btnAgregarT_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Agregar_Tarjeta().ShowDialog();
+            this.Close();
+        }
     }
 }

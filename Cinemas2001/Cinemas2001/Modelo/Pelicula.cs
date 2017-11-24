@@ -17,7 +17,7 @@ namespace Cinemas2001.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pelicula()
         {
-            this.Horarios = new ObservableListSource<Horario>();
+            this.Horarios = new HashSet<Horario>();
         }
     
         public string ID { get; set; }
@@ -29,6 +29,6 @@ namespace Cinemas2001.Modelo
         public string Estudio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Horario> Horarios { get; set; }
+        public virtual ICollection<Horario> Horarios { get; set; }
     }
 }
