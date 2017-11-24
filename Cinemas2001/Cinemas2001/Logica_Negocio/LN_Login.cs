@@ -17,7 +17,7 @@ namespace Cinemas2001.Logica_Negocio
             Usuario iUsuario = new Usuario();
             iUsuario.Username = pUsuario.Username;
             iUsuario.Password = pUsuario.Contrasena;
-
+            
             iUsuario = iAccesoDatos.fn_Login(iUsuario);
             MO_Usuario sUsuario = new MO_Usuario();
             sUsuario.Nombre = iUsuario.Nombre;

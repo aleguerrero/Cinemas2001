@@ -12,26 +12,18 @@ namespace Cinemas2001.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class Pelicula
+    public partial class Categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pelicula()
+        public Categoria()
         {
-            this.Horario = new HashSet<Horario>();
+            this.Pelicula = new HashSet<Pelicula>();
         }
     
-        public string ID { get; set; }
-        public string Nombre { get; set; }
-        public System.TimeSpan Duracion { get; set; }
-        public int ID_Categoria { get; set; }
-        public string Descripcion { get; set; }
-        public int ID_Director { get; set; }
-        public int ID_Estudio { get; set; }
+        public string Categoria1 { get; set; }
+        public int ID { get; set; }
     
-        public virtual Categoria Categoria { get; set; }
-        public virtual Director Director { get; set; }
-        public virtual Estudio Estudio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Horario> Horario { get; set; }
+        public virtual ICollection<Pelicula> Pelicula { get; set; }
     }
 }

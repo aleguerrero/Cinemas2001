@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f67057a6eab4089bcc31e9a4fdaab72" Name="Diagram1">
+        <EntityTypeShape EntityType="CineModel.Asiento" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Categoria" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Director" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Estudio" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Horario" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Pelicula" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Sala" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Sede" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Tarjeta_Credito" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Ticket" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CineModel.Usuario" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="CineModel.FK_Asiento_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Pelicula_Categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Pelicula_Director" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Pelicula_Estudios" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Horario_Pelicula" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Horario_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Ticket_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Sala_Sede" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Tarjeta_Credito_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CineModel.FK_Ticket_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

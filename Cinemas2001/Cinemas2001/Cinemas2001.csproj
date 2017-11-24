@@ -62,26 +62,41 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Logica_Negocio\LN_Login.cs" />
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Asiento.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Cinemas2001Model.Context.cs">
+    <Compile Include="Modelo\Categoria.cs">
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Cinemas2001Modelo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Cinemas2001Model.Context.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Cinemas2001Model.cs">
+    <Compile Include="Modelo\Cinemas2001Modelo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Cinemas2001Model.Designer.cs">
+    <Compile Include="Modelo\Cinemas2001Modelo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Director.cs">
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Estudio.cs">
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Horario.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\MO_Asiento.cs" />
     <Compile Include="Modelo\MO_Sede.cs" />
@@ -91,30 +106,33 @@
     <Compile Include="Modelo\MO_Sala.cs" />
     <Compile Include="Modelo\MO_Pelicula.cs" />
     <Compile Include="Modelo\Pelicula.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Sala.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Sede.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\sysdiagram.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+    <Compile Include="Modelo\sysdiagrams.cs">
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Tarjeta_Credito.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Ticket.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Usuario.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,12 +143,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Modelo\Cinemas2001Model.edmx">
+    <EntityDeploy Include="Modelo\Cinemas2001Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Cinemas2001Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>Cinemas2001Modelo.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Modelo\Cinemas2001Model.edmx.diagram">
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
+    <None Include="Modelo\Cinemas2001Modelo.edmx.diagram">
+      <DependentUpon>Cinemas2001Modelo.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -150,15 +168,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Modelo\Cinemas2001Model.Context.tt">
+    <Content Include="Modelo\Cinemas2001Modelo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
-      <LastGenOutput>Cinemas2001Model.Context.cs</LastGenOutput>
+      <DependentUpon>Cinemas2001Modelo.edmx</DependentUpon>
+      <LastGenOutput>Cinemas2001Modelo.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Modelo\Cinemas2001Model.tt">
+    <Content Include="Modelo\Cinemas2001Modelo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
-      <LastGenOutput>Cinemas2001Model.cs</LastGenOutput>
+      <DependentUpon>Cinemas2001Modelo.edmx</DependentUpon>
+      <LastGenOutput>Cinemas2001Modelo.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -30,6 +30,11 @@ namespace Cinemas2001
             if (iUsuario.Nombre != null)
             {
                 MessageBox.Show("Bienvenido " + iUsuario.Nombre + " " + iUsuario.Apellidos, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MenuPrincipal ventana = new MenuPrincipal();
+                
+                ventana.Show();
+                this.Hide();              
+
             } else
             {
                 MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -17,17 +17,17 @@ namespace Cinemas2001.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sala()
         {
-            this.Asientoes = new HashSet<Asiento>();
-            this.Horarios = new HashSet<Horario>();
+            this.Asiento = new HashSet<Asiento>();
+            this.Horario = new HashSet<Horario>();
         }
     
         public string ID { get; set; }
         public string ID_Sede { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asiento> Asientoes { get; set; }
+        public virtual ICollection<Asiento> Asiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Horario> Horarios { get; set; }
+        public virtual ICollection<Horario> Horario { get; set; }
         public virtual Sede Sede { get; set; }
     }
 }
