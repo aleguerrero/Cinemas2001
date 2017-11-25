@@ -43,7 +43,7 @@ namespace Cinemas2001.Acceso_Datos
                     MessageBox.Show("Error en registro, error: " + e.Message) ;
                     return false;
                 }
-            }
+            } //aa
         }
 
         public Usuario fn_Usuario_Sesion(Usuario pUsuario)
