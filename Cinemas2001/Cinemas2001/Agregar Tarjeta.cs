@@ -28,8 +28,9 @@ namespace Cinemas2001
             if (iLogica_Negocio.fn_Registro_Tarjeta(iTarjeta))
             {
                 MessageBox.Show("Tarjeta Agregada con éxito", "Registro Tarjetas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.txtBNumTarjeta.Clear();
-                this.txtBCVO.Clear();
+                this.Hide();
+                new TarjetasForm().ShowDialog();
+                this.Close();
             } else
             {
                 MessageBox.Show("Error", "Registro Tarjetas", MessageBoxButtons.OK, MessageBoxIcon.Error);

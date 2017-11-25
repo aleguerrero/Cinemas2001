@@ -322,6 +322,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log In";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

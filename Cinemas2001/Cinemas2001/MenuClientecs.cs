@@ -53,5 +53,13 @@ namespace Cinemas2001
             tf.ShowDialog();
             this.Close();
         }
+
+        private void btnEditarInfo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EditarInformacion ei = new EditarInformacion();
+            ei.ShowDialog();
+            this.Close();
+        }
     }
 }

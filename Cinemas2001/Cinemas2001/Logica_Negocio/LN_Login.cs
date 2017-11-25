@@ -107,5 +107,23 @@ namespace Cinemas2001.Logica_Negocio
             return iAccesoDatos.fn_Eliminar_Tarjeta(iTarjeta);
         }
 
+        public Boolean fn_Editar_Usuario(MO_Usuario pUsuario)
+        {
+            try
+            {
+                Usuario iUsuario = new Usuario();
+                iUsuario.Nombre = pUsuario.Nombre;
+                iUsuario.Apellidos = pUsuario.Apellidos;
+                iUsuario.DNI = pUsuario.Dni;
+                VUsername = pUsuario.Username;
+                iUsuario.Username = pUsuario.Username;
+                return iAccesoDatos.fn_Editar_Usuario(iUsuario, VDni);
+            } catch (Exception e)
+            {
+                return false;
+            }
+                
+        }
+
     }
 }

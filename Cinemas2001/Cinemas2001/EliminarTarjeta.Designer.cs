@@ -82,6 +82,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbSelecTarjeta);
             this.Name = "EliminarTarjeta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EliminarTarjeta";
             this.Load += new System.EventHandler(this.EliminarTarjeta_Load);
             this.ResumeLayout(false);

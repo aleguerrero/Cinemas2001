@@ -28,7 +28,17 @@ namespace Cinemas2001
                 {
                     if(iLogica_Negocio.fn_Cambiar_Password(txtPassAnt.Text, txtPassNew.Text)){
                         MessageBox.Show("Contraseña cambiada con éxito", "Cambiar Contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        MenuClientecs mc = new MenuClientecs();
+                        mc.ShowDialog();
+                        this.Close();
+                    } else
+                    {
+                        MessageBox.Show("E R R O R", "Cambiar Contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                } else
+                {
+                    MessageBox.Show("E R R O R", "Cambiar Contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } catch (Exception c)
             {

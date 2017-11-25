@@ -123,6 +123,7 @@
             this.Controls.Add(this.txtPassAnt);
             this.Controls.Add(this.label1);
             this.Name = "CambiarContrasenha";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cambiar Contraseña";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -24,5 +24,6 @@ namespace Cinemas2001
             menu.ShowDialog();
             this.Close();
         }
+
     }
 }

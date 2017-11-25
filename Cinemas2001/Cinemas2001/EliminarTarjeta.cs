@@ -32,7 +32,9 @@ namespace Cinemas2001
             if(iLogica_Negocio.fn_Eliminar_Tarjeta(iTarjeta))
             {
                 MessageBox.Show("Tarjeta eliminada con éxito", "Registro Tarjetas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.cmbSelecTarjeta.SelectedIndex = 0;
+                this.Hide();
+                new TarjetasForm().ShowDialog();
+                this.Close();
             }
             else
             {

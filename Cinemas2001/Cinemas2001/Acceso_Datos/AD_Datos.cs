@@ -136,7 +136,30 @@ namespace Cinemas2001.Acceso_Datos
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Error en registro, error: " + e.Message);
+                    return false;
+                }
+            }
+        }
+
+        public Boolean fn_Editar_Usuario(Usuario pUsuario, int pDNI)
+        {
+            Usuario sUsuario = new Usuario();
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    sUsuario = contexto.Usuarios.Where(cL => cL.DNI == pDNI).First();
+                    sUsuario.Nombre = pUsuario.Nombre;
+                    sUsuario.Apellidos = pUsuario.Apellidos;
+                    sUsuario.DNI = pUsuario.DNI;
+                    sUsuario.Username = pUsuario.Username;
+                    contexto.Entry(sUsuario).State = System.Data.Entity.EntityState.Modified;
+                    contexto.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
                     return false;
                 }
             }

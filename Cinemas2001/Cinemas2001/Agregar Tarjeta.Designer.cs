@@ -100,6 +100,7 @@
             this.Controls.Add(this.txtBNumTarjeta);
             this.Controls.Add(this.label1);
             this.Name = "Agregar_Tarjeta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar_Tarjeta";
             this.ResumeLayout(false);
             this.PerformLayout();
