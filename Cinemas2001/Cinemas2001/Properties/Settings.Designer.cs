@@ -32,5 +32,15 @@ namespace Cinemas2001.Properties {
                 return ((string)(this["Cinemas2001ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-B4PTCRP;Initial Catalog=Cine;Integrated Security=True")]
+        public string CineConnectionString {
+            get {
+                return ((string)(this["CineConnectionString"]));
+            }
+        }
     }
 }
