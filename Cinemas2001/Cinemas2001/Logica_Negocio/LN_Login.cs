@@ -13,11 +13,12 @@ namespace Cinemas2001.Logica_Negocio
         AD_Datos iAccesoDatos = new AD_Datos();
         private static String vUsername, vPassword;
         private static int vDni;
-        private static List<Tarjeta_Credito> lTarjetas;
+        private static List<int> lTarjetas;
 
         public static string VUsername { get => vUsername; set => vUsername = value; }
         public static string VPassword { get => vPassword; set => vPassword = value; }
         public static int VDni { get => vDni; set => vDni = value; }
+        public static List<int> LTarjetas { get => lTarjetas; set => lTarjetas = value; }
 
         public MO_Usuario fn_LoginUsuario(MO_Usuario pUsuario)
         {
@@ -85,8 +86,7 @@ namespace Cinemas2001.Logica_Negocio
             List<Tarjeta_Credito> vTarjetasC;
             iUsuario.DNI = VDni;
             vTarjetasC = iAccesoDatos.fn_Consultar_Tarjetas(iUsuario);
-            lTarjetas.Clear();
-            lTarjetas = vTarjetasC;
+            LTarjetas = vTarjetasC.Select(n => n.Numero_Tarjeta).ToList();
             return vTarjetasC;
         }
 
@@ -97,6 +97,14 @@ namespace Cinemas2001.Logica_Negocio
             iTarjeta.CVO = pTarjeta.Cvo;
             iTarjeta.ID_Usuario = VDni;
             return iAccesoDatos.fn_Agregar_Tarjeta(iTarjeta);
+        }
+
+        public Boolean fn_Eliminar_Tarjeta(MO_Tarjeta_Credito pTarjeta)
+        {
+            Tarjeta_Credito iTarjeta = new Tarjeta_Credito();
+            iTarjeta.Numero_Tarjeta = pTarjeta.Numero_Tarjeta;
+            LTarjetas.Remove(pTarjeta.Numero_Tarjeta);
+            return iAccesoDatos.fn_Eliminar_Tarjeta(iTarjeta);
         }
 
     }

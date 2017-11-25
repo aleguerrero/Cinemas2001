@@ -121,5 +121,25 @@ namespace Cinemas2001.Acceso_Datos
                 }
             }
         }
+
+        public Boolean fn_Eliminar_Tarjeta(Tarjeta_Credito pTarjeta)
+        {
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    pTarjeta = contexto.Tarjeta_Credito.Where(n => n.Numero_Tarjeta == pTarjeta.Numero_Tarjeta).First();
+                    contexto.Tarjeta_Credito.Remove(pTarjeta);
+                    contexto.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error en registro, error: " + e.Message);
+                    return false;
+                }
+            }
+        }
     }
 }

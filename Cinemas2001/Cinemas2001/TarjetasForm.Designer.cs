@@ -119,6 +119,7 @@
             this.btnEliminarT.TabIndex = 2;
             this.btnEliminarT.Text = "Eliminar Tarjeta";
             this.btnEliminarT.UseVisualStyleBackColor = true;
+            this.btnEliminarT.Click += new System.EventHandler(this.btnEliminarT_Click);
             // 
             // btnEditarT
             // 

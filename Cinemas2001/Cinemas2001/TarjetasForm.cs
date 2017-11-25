@@ -38,5 +38,12 @@ namespace Cinemas2001
             new Agregar_Tarjeta().ShowDialog();
             this.Close();
         }
+
+        private void btnEliminarT_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new EliminarTarjeta().ShowDialog();
+            this.Close();
+        }
     }
 }
