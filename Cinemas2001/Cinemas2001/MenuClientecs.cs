@@ -14,7 +14,7 @@ namespace Cinemas2001
 {
     public partial class MenuClientecs : Form
     {
-        LN_Login iLogica_Negocio = new LN_Login();
+        LN_Cinemas2001 iLogica_Negocio = new LN_Cinemas2001();
         public MenuClientecs()
         {
             InitializeComponent();

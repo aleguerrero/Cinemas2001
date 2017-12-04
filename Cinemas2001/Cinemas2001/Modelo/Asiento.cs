@@ -15,9 +15,12 @@ namespace Cinemas2001.Modelo
     public partial class Asiento
     {
         public string ID { get; set; }
-        public int Numero { get; set; }
+        public int ID_Fila_Asiento { get; set; }
+        public int Num_Asiento { get; set; }
         public string ID_Sala { get; set; }
+        public Nullable<bool> Disponibilidad { get; set; }
     
+        public virtual Fila_Asiento Fila_Asiento { get; set; }
         public virtual Sala Sala { get; set; }
     }
 }

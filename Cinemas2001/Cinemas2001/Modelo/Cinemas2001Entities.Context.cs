@@ -26,6 +26,7 @@ namespace Cinemas2001.Modelo
         }
     
         public virtual DbSet<Asiento> Asientoes { get; set; }
+        public virtual DbSet<Fila_Asiento> Fila_Asiento { get; set; }
         public virtual DbSet<Horario> Horarios { get; set; }
         public virtual DbSet<Pelicula> Peliculas { get; set; }
         public virtual DbSet<Sala> Salas { get; set; }

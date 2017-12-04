@@ -90,12 +90,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logica_Negocio\LN_Login.cs" />
+    <Compile Include="Logica_Negocio\LN_Cinemas2001.cs" />
     <Compile Include="MenuClientecs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuClientecs.Designer.cs">
       <DependentUpon>MenuClientecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPeliculas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPeliculas.Designer.cs">
+      <DependentUpon>MenuPeliculas.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -104,25 +110,28 @@
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Asiento.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Cinemas2001Model.Context.cs">
+    <Compile Include="Modelo\Cinemas2001Entities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Cinemas2001Model.Context.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Cinemas2001Model.cs">
+    <Compile Include="Modelo\Cinemas2001Entities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Cinemas2001Model.Designer.cs">
+    <Compile Include="Modelo\Cinemas2001Entities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Fila_Asiento.cs">
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Horario.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\MO_Asiento.cs" />
     <Compile Include="Modelo\MO_Sede.cs" />
@@ -133,25 +142,25 @@
     <Compile Include="Modelo\MO_Pelicula.cs" />
     <Compile Include="Modelo\ObservableListSource.cs" />
     <Compile Include="Modelo\Pelicula.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Sala.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Sede.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\sysdiagram.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Tarjeta_Credito.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Ticket.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Usuario.cs">
-      <DependentUpon>Cinemas2001Model.tt</DependentUpon>
+      <DependentUpon>Cinemas2001Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,6 +188,9 @@
     <EmbeddedResource Include="MenuClientecs.resx">
       <DependentUpon>MenuClientecs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MenuPeliculas.resx">
+      <DependentUpon>MenuPeliculas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,12 +217,12 @@
     <None Include="CineDataSet.xss">
       <DependentUpon>CineDataSet.xsd</DependentUpon>
     </None>
-    <EntityDeploy Include="Modelo\Cinemas2001Model.edmx">
+    <EntityDeploy Include="Modelo\Cinemas2001Entities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Cinemas2001Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>Cinemas2001Entities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Modelo\Cinemas2001Model.edmx.diagram">
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
+    <None Include="Modelo\Cinemas2001Entities.edmx.diagram">
+      <DependentUpon>Cinemas2001Entities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Cinemas2001.Modelo.Usuario.datasource" />
@@ -233,15 +245,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Modelo\Cinemas2001Model.Context.tt">
+    <Content Include="Modelo\Cinemas2001Entities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
-      <LastGenOutput>Cinemas2001Model.Context.cs</LastGenOutput>
+      <DependentUpon>Cinemas2001Entities.edmx</DependentUpon>
+      <LastGenOutput>Cinemas2001Entities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Modelo\Cinemas2001Model.tt">
+    <Content Include="Modelo\Cinemas2001Entities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Cinemas2001Model.edmx</DependentUpon>
-      <LastGenOutput>Cinemas2001Model.cs</LastGenOutput>
+      <DependentUpon>Cinemas2001Entities.edmx</DependentUpon>
+      <LastGenOutput>Cinemas2001Entities.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

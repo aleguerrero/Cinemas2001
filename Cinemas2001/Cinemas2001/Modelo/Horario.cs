@@ -21,8 +21,8 @@ namespace Cinemas2001.Modelo
         }
     
         public int id { get; set; }
-        public string id_pelicula { get; set; }
-        public System.DateTime fecha_horario { get; set; }
+        public int id_pelicula { get; set; }
+        public System.TimeSpan fecha_horario { get; set; }
         public string id_sala { get; set; }
     
         public virtual Pelicula Pelicula { get; set; }

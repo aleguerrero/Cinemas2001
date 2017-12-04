@@ -15,7 +15,7 @@ namespace Cinemas2001
 {
     public partial class Login : Form
     {
-        LN_Login iLn_Login = new LN_Login();
+        LN_Cinemas2001 iLn_Login = new LN_Cinemas2001();
         public Login()
         {
             InitializeComponent();

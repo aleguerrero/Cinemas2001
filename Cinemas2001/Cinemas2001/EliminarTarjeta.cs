@@ -14,7 +14,7 @@ namespace Cinemas2001
 {
     public partial class EliminarTarjeta : Form
     {
-        LN_Login iLogica_Negocio = new LN_Login();
+        LN_Cinemas2001 iLogica_Negocio = new LN_Cinemas2001();
         public EliminarTarjeta()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace Cinemas2001
 
         private void EliminarTarjeta_Load(object sender, EventArgs e)
         {
-            cmbSelecTarjeta.DataSource = LN_Login.LTarjetas;
+            cmbSelecTarjeta.DataSource = LN_Cinemas2001.LTarjetas;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

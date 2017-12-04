@@ -20,13 +20,10 @@ namespace Cinemas2001.Modelo
             this.Horarios = new HashSet<Horario>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public System.TimeSpan Duracion { get; set; }
         public string Categoria { get; set; }
-        public string Descripcion { get; set; }
-        public string Director { get; set; }
-        public string Estudio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Horario> Horarios { get; set; }

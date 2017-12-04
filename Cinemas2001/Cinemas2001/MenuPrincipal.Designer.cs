@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnCliente = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPeliculas = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,14 +44,15 @@
             this.btnCliente.UseVisualStyleBackColor = true;
             this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
-            // button1
+            // btnPeliculas
             // 
-            this.button1.Location = new System.Drawing.Point(193, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 50);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Películas";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPeliculas.Location = new System.Drawing.Point(193, 41);
+            this.btnPeliculas.Name = "btnPeliculas";
+            this.btnPeliculas.Size = new System.Drawing.Size(134, 50);
+            this.btnPeliculas.TabIndex = 1;
+            this.btnPeliculas.Text = "Películas";
+            this.btnPeliculas.UseVisualStyleBackColor = true;
+            this.btnPeliculas.Click += new System.EventHandler(this.btnPeliculas_Click);
             // 
             // button2
             // 
@@ -78,7 +79,7 @@
             this.ClientSize = new System.Drawing.Size(369, 199);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPeliculas);
             this.Controls.Add(this.btnCliente);
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -90,7 +91,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnCliente;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPeliculas;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }

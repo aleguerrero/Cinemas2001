@@ -8,17 +8,19 @@ using Cinemas2001.Modelo;
 
 namespace Cinemas2001.Logica_Negocio
 {
-    class LN_Login
+    class LN_Cinemas2001
     {
         AD_Datos iAccesoDatos = new AD_Datos();
         private static String vUsername, vPassword;
         private static int vDni;
         private static List<int> lTarjetas;
+        private static List<String> lPeliculas;
 
         public static string VUsername { get => vUsername; set => vUsername = value; }
         public static string VPassword { get => vPassword; set => vPassword = value; }
         public static int VDni { get => vDni; set => vDni = value; }
         public static List<int> LTarjetas { get => lTarjetas; set => lTarjetas = value; }
+        public static List<string> LPeliculas { get => lPeliculas; set => lPeliculas = value; }
 
         public MO_Usuario fn_LoginUsuario(MO_Usuario pUsuario)
         {
@@ -125,5 +127,45 @@ namespace Cinemas2001.Logica_Negocio
                 
         }
 
+        public List<string> fn_Cargar_Peliculas()
+        {
+            List<string> iPeliculas = new List<string>();
+            try
+            {
+                iPeliculas = iAccesoDatos.fn_Cargar_Peliculas();
+                return iPeliculas;
+            } catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public List<string> fn_Cargar_Horarios(string pPelicula)
+        {
+            List<string> iHorarios = new List<string>();
+            try
+            {
+                iHorarios = iAccesoDatos.fn_Consulta_Horarios(pPelicula);
+                return iHorarios;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public List<string> fn_Cargar_Asientos(string pFila, string pSede)
+        {
+            List<string> iAsientos = new List<string>();
+            try
+            {
+                iAsientos = iAccesoDatos.fn_Consulta_Asientos(pFila, pSede);
+                return iAsientos;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }

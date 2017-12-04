@@ -164,5 +164,68 @@ namespace Cinemas2001.Acceso_Datos
                 }
             }
         }
+
+        public List<string> fn_Cargar_Peliculas()
+        {
+            List<String> iListaPeliculas = new List<string>();
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    iListaPeliculas = contexto.Peliculas.Select(p => p.Nombre).ToList();
+                    return iListaPeliculas;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public List<String> fn_Consulta_Horarios(string pPelicula)
+        {
+            int vIDPelicula;
+            List<String> vHorarios = new List<String>();
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    vIDPelicula = contexto.Peliculas.Where(p => p.Nombre == pPelicula).Select(p => p.ID).First();
+                    vHorarios = contexto.Horarios.Where(h => h.id_pelicula == vIDPelicula).Select(h => h.fecha_horario.ToString()).ToList();
+                    return vHorarios;
+                } catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public List<String> fn_Consulta_Asientos(string pFila, string pSede)
+        {
+            List<String> lAsientos = new List<string>();
+            int vIDFila;
+            String vIDSede;
+            String vIDSala;
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities()) {
+                try
+                {
+                    contexto.Database.Connection.Open();
+
+                    //FUCK JOINS
+                    vIDSede = contexto.Sedes.Where(se => se.Nombre == pSede).Select(se => se.ID).First();
+                    vIDSala = contexto.Salas.Where(sa => sa.ID_Sede == vIDSede).Select(sa => sa.ID).First();
+                    vIDFila = contexto.Fila_Asiento.Where(f => f.Fila_Asiento1 == pFila).Select(f => f.ID_Fila_Asiento).First();
+
+                    //CONSULTA FINAL
+                    lAsientos = contexto.Asientoes.Where(f => f.ID_Fila_Asiento == vIDFila && f.ID_Sala == vIDSala && f.Disponibilidad == true).Select(f => f.Num_Asiento.ToString()).ToList();
+                    return lAsientos;
+                } catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
