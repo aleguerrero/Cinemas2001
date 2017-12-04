@@ -147,7 +147,11 @@ namespace Cinemas2001
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-
+            int vCantidadCompras = Convert.ToInt16(this.precioLabel.Text) / 3000; 
+            for (int i = 0; i < vCantidadCompras; i++)
+            {
+                
+            }
         }
     }
 }

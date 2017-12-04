@@ -227,5 +227,20 @@ namespace Cinemas2001.Acceso_Datos
                 }
             }
         }
+
+        public Boolean fn_Guardar_Campos(Asiento pAsiento)
+        {
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+
+                } catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
