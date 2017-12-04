@@ -34,9 +34,13 @@ namespace Cinemas2001
             if (this.chk1.Checked)
             {
                 this.cmbF1.Enabled = true;
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.chk2.Enabled = true;
             } else
             {
                 this.cmbF1.Enabled = false;
+                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.chk2.Enabled = false;
             }
         }
 
@@ -45,10 +49,14 @@ namespace Cinemas2001
             if (this.chk2.Checked)
             {
                 this.cmbF2.Enabled = true;
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.chk3.Enabled = true;
             }
             else
             {
                 this.cmbF2.Enabled = false;
+                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.chk3.Enabled = false;
             }
         }
 
@@ -57,10 +65,14 @@ namespace Cinemas2001
             if (this.chk3.Checked)
             {
                 this.cmbF3.Enabled = true;
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.chk4.Enabled = true;
             }
             else
             {
                 this.cmbF3.Enabled = false;
+                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.chk4.Enabled = false;
             }
         }
 
@@ -69,10 +81,14 @@ namespace Cinemas2001
             if (this.chk4.Checked)
             {
                 this.cmbF4.Enabled = true;
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.chk5.Enabled = true;
             }
             else
             {
                 this.cmbF4.Enabled = false;
+                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.chk5.Enabled = false;
             }
         }
 
@@ -127,6 +143,11 @@ namespace Cinemas2001
         {
             this.cmbA5.Enabled = true;
             this.cmbA5.DataSource = iLN.fn_Cargar_Asientos(this.cmbF5.Text, this.cmbSede.Text);
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
