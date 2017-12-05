@@ -208,6 +208,8 @@ namespace Cinemas2001.Acceso_Datos
             int vIDFila;
             String vIDSede;
             String vIDSala;
+            int vIDHorario;
+            List<int> vIDAsiento = new List<int>();
             using (Cinemas2001Entities contexto = new Cinemas2001Entities()) {
                 try
                 {
@@ -217,9 +219,15 @@ namespace Cinemas2001.Acceso_Datos
                     vIDSede = contexto.Sedes.Where(se => se.Nombre == pSede).Select(se => se.ID).First();
                     vIDSala = contexto.Salas.Where(sa => sa.ID_Sede == vIDSede).Select(sa => sa.ID).First();
                     vIDFila = contexto.Fila_Asiento.Where(f => f.Fila_Asiento1 == pFila).Select(f => f.ID_Fila_Asiento).First();
+                    vIDHorario = contexto.Horarios.Where(h => h.id_sala == vIDSala).Select(h => h.id).First();
+                    vIDAsiento = contexto.Asiento_Horario.Where(ah => ah.id_Horario == vIDHorario && ah.Disponibilidad == true).Select(ah => ah.id_Asiento).ToList();
 
                     //CONSULTA FINAL
-                    lAsientos = contexto.Asientoes.Where(f => f.ID_Fila_Asiento == vIDFila && f.ID_Sala == vIDSala && f.Disponibilidad == true).Select(f => f.Num_Asiento.ToString()).ToList();
+                    for (int i = 0; i < vIDAsiento.Count; i++)
+                    {
+                        int vIDA = vIDAsiento.ElementAt(i);
+                        lAsientos.Add(contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFila && a.ID == vIDA).Select(a => a.Num_Asiento.ToString()).First());
+                    }
                     return lAsientos;
                 } catch (Exception e)
                 {
@@ -228,19 +236,33 @@ namespace Cinemas2001.Acceso_Datos
             }
         }
 
-        public Boolean fn_Guardar_Campos(Asiento pAsiento)
-        {
-            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
-            {
-                try
-                {
-                    contexto.Database.Connection.Open();
+    //    public Boolean fn_Guardar_Campos(int pAsiento, string pFilaAsiento)
+    //    {
+    //        int vIDFilaAsiento;
+    //        Asiento vAsiento = new Asiento();
 
-                } catch (Exception e)
-                {
-                    return false;
-                }
-            }
-        }
+    //        using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+    //        {
+    //            try
+    //            {
+    //                contexto.Database.Connection.Open();
+
+    //                //ID Asiento
+    //                vIDFilaAsiento = contexto.Fila_Asiento.Where(fa => fa.Fila_Asiento1 == pFilaAsiento).Select(fa => fa.ID_Fila_Asiento).First();
+
+    //                //Cambia disponibilidad
+    //                vAsiento = contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFilaAsiento && a.Num_Asiento == pAsiento).First();
+    //                vAsiento.Disponibilidad = false;
+    //                contexto.Entry(vAsiento).State = System.Data.Entity.EntityState.Modified;
+    //                contexto.SaveChanges();
+    //                return true;
+    //            } catch (Exception e)
+    //            {
+    //                return false;
+    //            }
+    //        }
+    //    }
+
+    //    public Boolean fn_Agregar_Ticket(Ticket  )
     }
 }

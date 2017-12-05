@@ -9,11 +9,18 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="ID_Fila_Asiento" Type="int" Nullable="false" />
           <Property Name="Num_Asiento" Type="int" Nullable="false" />
-          <Property Name="ID_Sala" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="Disponibilidad" Type="bit" />
+        </EntityType>
+        <EntityType Name="Asiento_Horario">
+          <Key>
+            <PropertyRef Name="id_Asiento_Horario" />
+          </Key>
+          <Property Name="id_Asiento_Horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Asiento" Type="int" Nullable="false" />
+          <Property Name="id_Horario" Type="int" Nullable="false" />
+          <Property Name="Disponibilidad" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Fila_Asiento">
           <Key>
@@ -104,15 +111,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Asiento_Sala">
-          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
-          <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
+        <Association Name="FK_Asiento_Horario_Asiento_Horario">
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Sala">
+            <Principal Role="Asiento">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Asiento">
-              <PropertyRef Name="ID_Sala" />
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_Horario_Horario">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Horario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,6 +209,7 @@
         </Association>
         <EntityContainer Name="Cinemas2001ModelStoreContainer">
           <EntitySet Name="Asiento" EntityType="Self.Asiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asiento_Horario" EntityType="Self.Asiento_Horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fila_Asiento" EntityType="Self.Fila_Asiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pelicula" EntityType="Self.Pelicula" Schema="dbo" store:Type="Tables" />
@@ -203,9 +223,13 @@
             <End Role="Fila_Asiento" EntitySet="Fila_Asiento" />
             <End Role="Asiento" EntitySet="Asiento" />
           </AssociationSet>
-          <AssociationSet Name="FK_Asiento_Sala" Association="Self.FK_Asiento_Sala">
-            <End Role="Sala" EntitySet="Sala" />
+          <AssociationSet Name="FK_Asiento_Horario_Asiento_Horario" Association="Self.FK_Asiento_Horario_Asiento_Horario">
             <End Role="Asiento" EntitySet="Asiento" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_Horario_Horario" Association="Self.FK_Asiento_Horario_Horario">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
           </AssociationSet>
           <AssociationSet Name="FK_Horario_Pelicula" Association="Self.FK_Horario_Pelicula">
             <End Role="Pelicula" EntitySet="Pelicula" />
@@ -241,13 +265,22 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="ID_Fila_Asiento" Type="Int32" Nullable="false" />
           <Property Name="Num_Asiento" Type="Int32" Nullable="false" />
-          <Property Name="ID_Sala" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Disponibilidad" Type="Boolean" />
           <NavigationProperty Name="Fila_Asiento" Relationship="Self.FK_Asiento_Asiento" FromRole="Asiento" ToRole="Fila_Asiento" />
-          <NavigationProperty Name="Sala" Relationship="Self.FK_Asiento_Sala" FromRole="Asiento" ToRole="Sala" />
+          <NavigationProperty Name="Asiento_Horario" Relationship="Self.FK_Asiento_Horario_Asiento_Horario" FromRole="Asiento" ToRole="Asiento_Horario" />
+        </EntityType>
+        <EntityType Name="Asiento_Horario">
+          <Key>
+            <PropertyRef Name="id_Asiento_Horario" />
+          </Key>
+          <Property Name="id_Asiento_Horario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Asiento" Type="Int32" Nullable="false" />
+          <Property Name="id_Horario" Type="Int32" Nullable="false" />
+          <Property Name="Disponibilidad" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Asiento" Relationship="Self.FK_Asiento_Horario_Asiento_Horario" FromRole="Asiento_Horario" ToRole="Asiento" />
+          <NavigationProperty Name="Horario" Relationship="Self.FK_Asiento_Horario_Horario" FromRole="Asiento_Horario" ToRole="Horario" />
         </EntityType>
         <EntityType Name="Fila_Asiento">
           <Key>
@@ -265,6 +298,7 @@
           <Property Name="id_pelicula" Type="Int32" Nullable="false" />
           <Property Name="fecha_horario" Type="Time" Nullable="false" Precision="4" />
           <Property Name="id_sala" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Asiento_Horario" Relationship="Self.FK_Asiento_Horario_Horario" FromRole="Horario" ToRole="Asiento_Horario" />
           <NavigationProperty Name="Pelicula" Relationship="Self.FK_Horario_Pelicula" FromRole="Horario" ToRole="Pelicula" />
           <NavigationProperty Name="Sala" Relationship="Self.FK_Horario_Sala" FromRole="Horario" ToRole="Sala" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Sala" FromRole="Horario" ToRole="Ticket" />
@@ -286,7 +320,6 @@
           <Property Name="ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_Sede" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Num_Sala" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Asientoes" Relationship="Self.FK_Asiento_Sala" FromRole="Sala" ToRole="Asiento" />
           <NavigationProperty Name="Horarios" Relationship="Self.FK_Horario_Sala" FromRole="Sala" ToRole="Horario" />
           <NavigationProperty Name="Sede" Relationship="Self.FK_Sala_Sede" FromRole="Sala" ToRole="Sede" />
         </EntityType>
@@ -352,15 +385,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Asiento_Sala">
-          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
-          <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
+        <Association Name="FK_Asiento_Horario_Asiento_Horario">
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Sala">
+            <Principal Role="Asiento">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Asiento">
-              <PropertyRef Name="ID_Sala" />
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_Horario_Horario">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Horario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -438,6 +483,7 @@
         </Association>
         <EntityContainer Name="Cinemas2001Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Asientoes" EntityType="Self.Asiento" />
+          <EntitySet Name="Asiento_Horario" EntityType="Self.Asiento_Horario" />
           <EntitySet Name="Fila_Asiento" EntityType="Self.Fila_Asiento" />
           <EntitySet Name="Horarios" EntityType="Self.Horario" />
           <EntitySet Name="Peliculas" EntityType="Self.Pelicula" />
@@ -451,9 +497,13 @@
             <End Role="Fila_Asiento" EntitySet="Fila_Asiento" />
             <End Role="Asiento" EntitySet="Asientoes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Asiento_Sala" Association="Self.FK_Asiento_Sala">
-            <End Role="Sala" EntitySet="Salas" />
+          <AssociationSet Name="FK_Asiento_Horario_Asiento_Horario" Association="Self.FK_Asiento_Horario_Asiento_Horario">
             <End Role="Asiento" EntitySet="Asientoes" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_Horario_Horario" Association="Self.FK_Asiento_Horario_Horario">
+            <End Role="Horario" EntitySet="Horarios" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
           </AssociationSet>
           <AssociationSet Name="FK_Horario_Pelicula" Association="Self.FK_Horario_Pelicula">
             <End Role="Pelicula" EntitySet="Peliculas" />
@@ -492,7 +542,15 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Fila_Asiento" ColumnName="ID_Fila_Asiento" />
                 <ScalarProperty Name="Num_Asiento" ColumnName="Num_Asiento" />
-                <ScalarProperty Name="ID_Sala" ColumnName="ID_Sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asiento_Horario">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Asiento_Horario">
+              <MappingFragment StoreEntitySet="Asiento_Horario">
+                <ScalarProperty Name="id_Asiento_Horario" ColumnName="id_Asiento_Horario" />
+                <ScalarProperty Name="id_Asiento" ColumnName="id_Asiento" />
+                <ScalarProperty Name="id_Horario" ColumnName="id_Horario" />
                 <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
               </MappingFragment>
             </EntityTypeMapping>

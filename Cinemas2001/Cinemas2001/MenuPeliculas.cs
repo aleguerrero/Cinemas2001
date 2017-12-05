@@ -34,12 +34,12 @@ namespace Cinemas2001
             if (this.chk1.Checked)
             {
                 this.cmbF1.Enabled = true;
-                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel.Text));
                 this.chk2.Enabled = true;
             } else
             {
                 this.cmbF1.Enabled = false;
-                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(Convert.ToInt16(this.precioLabel.Text) - 3000);
                 this.chk2.Enabled = false;
             }
         }
@@ -49,13 +49,13 @@ namespace Cinemas2001
             if (this.chk2.Checked)
             {
                 this.cmbF2.Enabled = true;
-                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel.Text));
                 this.chk3.Enabled = true;
             }
             else
             {
                 this.cmbF2.Enabled = false;
-                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(Convert.ToInt16(this.precioLabel.Text) - 3000);
                 this.chk3.Enabled = false;
             }
         }
@@ -65,13 +65,13 @@ namespace Cinemas2001
             if (this.chk3.Checked)
             {
                 this.cmbF3.Enabled = true;
-                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel.Text));
                 this.chk4.Enabled = true;
             }
             else
             {
                 this.cmbF3.Enabled = false;
-                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(Convert.ToInt16(this.precioLabel.Text) - 3000);
                 this.chk4.Enabled = false;
             }
         }
@@ -81,13 +81,13 @@ namespace Cinemas2001
             if (this.chk4.Checked)
             {
                 this.cmbF4.Enabled = true;
-                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(3000 + Convert.ToInt16(this.precioLabel.Text));
                 this.chk5.Enabled = true;
             }
             else
             {
                 this.cmbF4.Enabled = false;
-                this.precioLabel.Text = Convert.ToString(3000 - Convert.ToInt16(this.precioLabel));
+                this.precioLabel.Text = Convert.ToString(Convert.ToInt16(this.precioLabel.Text) - 3000);
                 this.chk5.Enabled = false;
             }
         }

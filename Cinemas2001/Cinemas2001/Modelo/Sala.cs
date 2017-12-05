@@ -17,7 +17,6 @@ namespace Cinemas2001.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sala()
         {
-            this.Asientoes = new HashSet<Asiento>();
             this.Horarios = new HashSet<Horario>();
         }
     
@@ -25,8 +24,6 @@ namespace Cinemas2001.Modelo
         public string ID_Sede { get; set; }
         public string Num_Sala { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asiento> Asientoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Horario> Horarios { get; set; }
         public virtual Sede Sede { get; set; }
