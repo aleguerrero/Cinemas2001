@@ -118,31 +118,36 @@ namespace Cinemas2001
         private void cmbF1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbA1.Enabled = true;
-            this.cmbA1.DataSource = iLN.fn_Cargar_Asientos(this.cmbF1.Text, this.cmbSede.Text);
+            TimeSpan vHorario = TimeSpan.Parse(this.cmbHorario.Text.ToString()); 
+            this.cmbA1.DataSource = iLN.fn_Cargar_Asientos(this.cmbF1.Text, this.cmbSede.Text, vHorario, this.cmbPeliculas.Text);
         }
 
         private void cmbF2_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbA2.Enabled = true;
-            this.cmbA2.DataSource = iLN.fn_Cargar_Asientos(this.cmbF2.Text, this.cmbSede.Text);
+            TimeSpan vHorario = TimeSpan.Parse(this.cmbHorario.Text.ToString());
+            this.cmbA2.DataSource = iLN.fn_Cargar_Asientos(this.cmbF2.Text, this.cmbSede.Text, vHorario, this.cmbPeliculas.Text);
         }
 
         private void cmbF3_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbA3.Enabled = true;
-            this.cmbA3.DataSource = iLN.fn_Cargar_Asientos(this.cmbF3.Text, this.cmbSede.Text);
+            TimeSpan vHorario = TimeSpan.Parse(this.cmbHorario.Text.ToString());
+            this.cmbA3.DataSource = iLN.fn_Cargar_Asientos(this.cmbF3.Text, this.cmbSede.Text, vHorario, this.cmbPeliculas.Text);
         }
 
         private void cmbF4_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbA4.Enabled = true;
-            this.cmbA4.DataSource = iLN.fn_Cargar_Asientos(this.cmbF4.Text, this.cmbSede.Text);
+            TimeSpan vHorario = TimeSpan.Parse(this.cmbHorario.Text.ToString());
+            this.cmbA4.DataSource = iLN.fn_Cargar_Asientos(this.cmbF4.Text, this.cmbSede.Text, vHorario, this.cmbPeliculas.Text);
         }
 
         private void cmbF5_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbA5.Enabled = true;
-            this.cmbA5.DataSource = iLN.fn_Cargar_Asientos(this.cmbF5.Text, this.cmbSede.Text);
+            TimeSpan vHorario = TimeSpan.Parse(this.cmbHorario.Text.ToString());
+            this.cmbA5.DataSource = iLN.fn_Cargar_Asientos(this.cmbF5.Text, this.cmbSede.Text, vHorario, this.cmbPeliculas.Text);
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)

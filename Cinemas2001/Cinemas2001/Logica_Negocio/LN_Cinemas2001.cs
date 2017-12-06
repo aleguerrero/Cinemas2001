@@ -154,12 +154,12 @@ namespace Cinemas2001.Logica_Negocio
             }
         }
 
-        public List<string> fn_Cargar_Asientos(string pFila, string pSede)
+        public List<string> fn_Cargar_Asientos(string pFila, string pSede, TimeSpan pHorario, string pPelicula)
         {
             List<string> iAsientos = new List<string>();
             try
             {
-                iAsientos = iAccesoDatos.fn_Consulta_Asientos(pFila, pSede);
+                iAsientos = iAccesoDatos.fn_Consulta_Asientos(pFila, pSede, pHorario, pPelicula);
                 return iAsientos;
             }
             catch (Exception e)

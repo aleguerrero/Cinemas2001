@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c3662c7637f14ab8ba7a516099fc0675" Name="Diagram1" ZoomLevel="70">
+      <Diagram DiagramId="e18f716018cc4421ab88a7341a72f39e" Name="Diagram1">
         <EntityTypeShape EntityType="Cinemas2001Model.Asiento" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Cinemas2001Model.Asiento_Horario" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Cinemas2001Model.Fila_Asiento" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />

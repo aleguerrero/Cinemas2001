@@ -202,32 +202,60 @@ namespace Cinemas2001.Acceso_Datos
             }
         }
 
-        public List<String> fn_Consulta_Asientos(string pFila, string pSede)
+        public List<String> fn_Consulta_Asientos(string pFila, string pSede, TimeSpan pHorario, string pPelicula)
         {
-            List<String> lAsientos = new List<string>();
-            int vIDFila;
-            String vIDSede;
-            String vIDSala;
-            int vIDHorario;
+            List<String> lAsientos = new List<String>();
+            int vIDFila, vIDHorario;
+            String vIDSede, vIDSala;
             List<int> vIDAsiento = new List<int>();
             using (Cinemas2001Entities contexto = new Cinemas2001Entities()) {
                 try
                 {
                     contexto.Database.Connection.Open();
 
-                    //FUCK JOINS
-                    vIDSede = contexto.Sedes.Where(se => se.Nombre == pSede).Select(se => se.ID).First();
-                    vIDSala = contexto.Salas.Where(sa => sa.ID_Sede == vIDSede).Select(sa => sa.ID).First();
-                    vIDFila = contexto.Fila_Asiento.Where(f => f.Fila_Asiento1 == pFila).Select(f => f.ID_Fila_Asiento).First();
-                    vIDHorario = contexto.Horarios.Where(h => h.id_sala == vIDSala).Select(h => h.id).First();
-                    vIDAsiento = contexto.Asiento_Horario.Where(ah => ah.id_Horario == vIDHorario && ah.Disponibilidad == true).Select(ah => ah.id_Asiento).ToList();
+                    ////JOINS
+                    //vIDSede = contexto.Sedes.Where(se => se.Nombre == pSede).Select(se => se.ID).First();
+                    //vIDSala = contexto.Salas.Where(sa => sa.ID_Sede == vIDSede).Select(sa => sa.ID).First();
+                    //vIDFila = contexto.Fila_Asiento.Where(f => f.Fila_Asiento1 == pFila).Select(f => f.ID_Fila_Asiento).First();
+                    //vIDHorario = contexto.Horarios.Where(h => h.id_sala == vIDSala && h.fecha_horario == pHorario).Select(h => h.id).First();
+                    //vIDAsiento = contexto.Asiento_Horario.Where(ah => ah.id_Horario == vIDHorario && ah.Disponibilidad == true).Select(ah => ah.id_Asiento).ToList();
 
-                    //CONSULTA FINAL
-                    for (int i = 0; i < vIDAsiento.Count; i++)
-                    {
-                        int vIDA = vIDAsiento.ElementAt(i);
-                        lAsientos.Add(contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFila && a.ID == vIDA).Select(a => a.Num_Asiento.ToString()).First());
-                    }
+                    ////CONSULTA FINAL
+                    //for (int i = 0; i < vIDAsiento.Count; i++)
+                    //{
+                    //    int vIDA = vIDAsiento.ElementAt(i);
+                    //    lAsientos.Add(contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFila && a.ID == vIDA).
+                    //        Select(a => a.Num_Asiento.ToString()).
+                    //        First());
+                    //}
+
+                    //var vLista = (from fa in contexto.Fila_Asiento join a in contexto.Asientoes on fa.ID_Fila_Asiento equals a.ID_Fila_Asiento
+                    //              join ah in contexto.Asiento_Horario on a.ID equals ah.id_Asiento
+                    //              join hr in contexto.Horarios on ah.id_Asiento_Horario equals hr.id
+                    //              join p in contexto.Peliculas on hr.id_pelicula equals p.ID
+                    //              join sa in contexto.Salas on hr.id_sala equals sa.ID
+                    //              join se in contexto.Sedes on sa.ID_Sede equals se.ID
+                    //              where fa.Fila_Asiento1 == pFila
+                    //              && se.Nombre == pSede
+                    //              && hr.fecha_horario == pHorario
+                    //              && p.Nombre == pPelicula
+                    //              select new {
+                    //                  lAsientos = a.Num_Asiento.ToString()
+                    //              }).Take(10);
+
+                    lAsientos = contexto.("select a.Num_Asiento, fa.Fila_Asiento " +
+                        "from asiento a, Fila_Asiento fa, Asiento_Horario ah, Horario h, Pelicula p, Sala sa, Sede s " +
+                        "where fa.ID_Fila_Asiento = a.ID_Fila_Asiento " +
+                        "and a.ID = ah.id_Asiento " +
+                        "and ah.id_Horario = h.id " +
+                        "and h.id_pelicula = p.ID " +
+                        "and h.id_sala = sa.ID " +
+                        "and sa.ID_Sede = s.ID " +
+                        "and p.Nombre = 'Spiderman 2' " +
+                        "and h.fecha_horario = '5:00:00' " +
+                        "and s.Nombre = 'San José' " +
+                        "and fa.Fila_Asiento = 'A'");
+
                     return lAsientos;
                 } catch (Exception e)
                 {
