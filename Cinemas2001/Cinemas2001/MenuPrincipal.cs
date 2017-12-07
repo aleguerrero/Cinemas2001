@@ -31,5 +31,12 @@ namespace Cinemas2001
             new MenuPeliculas().ShowDialog();
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new TablaHistorial().ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -129,6 +129,7 @@
             this.btnAtras.TabIndex = 5;
             this.btnAtras.Text = "Atrás";
             this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // label3
             // 
@@ -331,6 +332,7 @@
             // chk3
             // 
             this.chk3.AutoSize = true;
+            this.chk3.Enabled = false;
             this.chk3.Location = new System.Drawing.Point(115, 242);
             this.chk3.Name = "chk3";
             this.chk3.Size = new System.Drawing.Size(39, 17);
@@ -393,6 +395,7 @@
             // chk4
             // 
             this.chk4.AutoSize = true;
+            this.chk4.Enabled = false;
             this.chk4.Location = new System.Drawing.Point(115, 292);
             this.chk4.Name = "chk4";
             this.chk4.Size = new System.Drawing.Size(39, 17);
@@ -455,6 +458,7 @@
             // chk5
             // 
             this.chk5.AutoSize = true;
+            this.chk5.Enabled = false;
             this.chk5.Location = new System.Drawing.Point(115, 342);
             this.chk5.Name = "chk5";
             this.chk5.Size = new System.Drawing.Size(39, 17);

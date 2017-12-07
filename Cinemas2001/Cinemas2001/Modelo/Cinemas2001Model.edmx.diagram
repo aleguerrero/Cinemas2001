@@ -4,27 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e18f716018cc4421ab88a7341a72f39e" Name="Diagram1">
-        <EntityTypeShape EntityType="Cinemas2001Model.Asiento" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Asiento_Horario" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Fila_Asiento" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Horario" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Pelicula" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Sala" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Sede" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="75a76e5408ff4d30b07ca5545c90e4ec" Name="Diagram1">
+        <EntityTypeShape EntityType="Cinemas2001Model.Asiento" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Asiento_Horario" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Fila_Asiento" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Horario" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Pelicula" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Sala" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Sede" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Cinemas2001Model.sysdiagram" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Tarjeta_Credito" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Tarjeta_Credito" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Cinemas2001Model.Ticket" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cinemas2001Model.Usuario" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinemas2001Model.Usuario" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="Cinemas2001Model.FK_Asiento_Asiento" ManuallyRouted="false" />
         <AssociationConnector Association="Cinemas2001Model.FK_Asiento_Horario_Asiento_Horario" ManuallyRouted="false" />
         <AssociationConnector Association="Cinemas2001Model.FK_Asiento_Horario_Horario" ManuallyRouted="false" />
         <AssociationConnector Association="Cinemas2001Model.FK_Horario_Pelicula" ManuallyRouted="false" />
         <AssociationConnector Association="Cinemas2001Model.FK_Horario_Sala" ManuallyRouted="false" />
-        <AssociationConnector Association="Cinemas2001Model.FK_Ticket_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Ticket_Horario" ManuallyRouted="false" />
         <AssociationConnector Association="Cinemas2001Model.FK_Sala_Sede" ManuallyRouted="false" />
         <AssociationConnector Association="Cinemas2001Model.FK_Tarjeta_Credito_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="Cinemas2001Model.FK_Ticket_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinemas2001Model.FK_Ticket_Ticket" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

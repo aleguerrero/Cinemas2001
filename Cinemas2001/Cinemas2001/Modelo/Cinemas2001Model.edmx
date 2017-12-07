@@ -82,11 +82,13 @@
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_Ticket" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_usuario" Type="int" Nullable="false" />
-          <Property Name="id_horario" Type="int" Nullable="false" />
+          <Property Name="id_Ticket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Usuario" Type="int" Nullable="false" />
+          <Property Name="id_Horario" Type="int" Nullable="false" />
+          <Property Name="nom_pelicula" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="horario" Type="time" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -183,7 +185,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_Sala">
+        <Association Name="FK_Ticket_Horario">
           <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -191,11 +193,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Ticket">
-              <PropertyRef Name="id_horario" />
+              <PropertyRef Name="id_Horario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_Usuario">
+        <Association Name="FK_Ticket_Ticket">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,7 +205,7 @@
               <PropertyRef Name="DNI" />
             </Principal>
             <Dependent Role="Ticket">
-              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="id_Usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -247,11 +249,11 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Sala" Association="Self.FK_Ticket_Sala">
+          <AssociationSet Name="FK_Ticket_Horario" Association="Self.FK_Ticket_Horario">
             <End Role="Horario" EntitySet="Horario" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Usuario" Association="Self.FK_Ticket_Usuario">
+          <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
@@ -301,7 +303,7 @@
           <NavigationProperty Name="Asiento_Horario" Relationship="Self.FK_Asiento_Horario_Horario" FromRole="Horario" ToRole="Asiento_Horario" />
           <NavigationProperty Name="Pelicula" Relationship="Self.FK_Horario_Pelicula" FromRole="Horario" ToRole="Pelicula" />
           <NavigationProperty Name="Sala" Relationship="Self.FK_Horario_Sala" FromRole="Horario" ToRole="Sala" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Sala" FromRole="Horario" ToRole="Ticket" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Horario" FromRole="Horario" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="Pelicula">
           <Key>
@@ -352,13 +354,15 @@
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_Ticket" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_usuario" Type="Int32" Nullable="false" />
-          <Property Name="id_horario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Horario" Relationship="Self.FK_Ticket_Sala" FromRole="Ticket" ToRole="Horario" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_Ticket_Usuario" FromRole="Ticket" ToRole="Usuario" />
+          <Property Name="id_Ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_Horario" Type="Int32" Nullable="false" />
+          <Property Name="nom_pelicula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="horario" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Horario1" Relationship="Self.FK_Ticket_Horario" FromRole="Ticket" ToRole="Horario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Ticket_Ticket" FromRole="Ticket" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -371,7 +375,7 @@
           <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tarjeta_Credito" Relationship="Self.FK_Tarjeta_Credito_Usuario" FromRole="Usuario" ToRole="Tarjeta_Credito" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Usuario" FromRole="Usuario" ToRole="Ticket" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Ticket" FromRole="Usuario" ToRole="Ticket" />
         </EntityType>
         <Association Name="FK_Asiento_Asiento">
           <End Role="Fila_Asiento" Type="Self.Fila_Asiento" Multiplicity="1" />
@@ -433,7 +437,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_Sala">
+        <Association Name="FK_Ticket_Horario">
           <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -441,7 +445,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Ticket">
-              <PropertyRef Name="id_horario" />
+              <PropertyRef Name="id_Horario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -469,7 +473,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_Usuario">
+        <Association Name="FK_Ticket_Ticket">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -477,7 +481,7 @@
               <PropertyRef Name="DNI" />
             </Principal>
             <Dependent Role="Ticket">
-              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="id_Usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -513,7 +517,7 @@
             <End Role="Sala" EntitySet="Salas" />
             <End Role="Horario" EntitySet="Horarios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Sala" Association="Self.FK_Ticket_Sala">
+          <AssociationSet Name="FK_Ticket_Horario" Association="Self.FK_Ticket_Horario">
             <End Role="Horario" EntitySet="Horarios" />
             <End Role="Ticket" EntitySet="Tickets" />
           </AssociationSet>
@@ -525,7 +529,7 @@
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Usuario" Association="Self.FK_Ticket_Usuario">
+          <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Ticket" EntitySet="Tickets" />
           </AssociationSet>
@@ -623,9 +627,11 @@
           <EntitySetMapping Name="Tickets">
             <EntityTypeMapping TypeName="Cinemas2001Model.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-                <ScalarProperty Name="id_horario" ColumnName="id_horario" />
+                <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+                <ScalarProperty Name="id_Horario" ColumnName="id_Horario" />
+                <ScalarProperty Name="nom_pelicula" ColumnName="nom_pelicula" />
+                <ScalarProperty Name="horario" ColumnName="horario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

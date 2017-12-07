@@ -167,5 +167,36 @@ namespace Cinemas2001.Logica_Negocio
                 return null;
             }
         }
+
+        public Boolean fn_Guardar_Campos(int pAsiento, string pFilaAsiento, string pPelicula, string pSede, TimeSpan pHorario)
+        {
+            return iAccesoDatos.fn_Guardar_Campos(pAsiento, pFilaAsiento, pPelicula, pSede, pHorario, VDni);
+        }
+
+        public string fn_Consulta_Sala(string pPelicula, TimeSpan pHorario)
+        {
+            try
+            {
+                return iAccesoDatos.fn_Consulta_Sala(pPelicula, pHorario);
+            } catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public List<Ticket> fn_Consulta_Historial()
+        {
+            Ticket iTicket = new Ticket();
+            try
+            {
+
+                iTicket.id_Usuario = VDni;
+                return iAccesoDatos.fn_Consulta_Tickets(iTicket);
+
+            } catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }

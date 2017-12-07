@@ -14,11 +14,13 @@ namespace Cinemas2001.Modelo
     
     public partial class Ticket
     {
-        public int id { get; set; }
-        public int id_usuario { get; set; }
-        public int id_horario { get; set; }
+        public int id_Ticket { get; set; }
+        public int id_Usuario { get; set; }
+        public int id_Horario { get; set; }
+        public string nom_pelicula { get; set; }
+        public System.TimeSpan horario { get; set; }
     
-        public virtual Horario Horario { get; set; }
+        public virtual Horario Horario1 { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }
