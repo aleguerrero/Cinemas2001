@@ -45,5 +45,6 @@ namespace Cinemas2001
             new EliminarTarjeta().ShowDialog();
             this.Close();
         }
+
     }
 }

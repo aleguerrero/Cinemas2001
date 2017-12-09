@@ -13,13 +13,13 @@ namespace Cinemas2001.Logica_Negocio
         AD_Datos iAccesoDatos = new AD_Datos();
         private static String vUsername, vPassword;
         private static int vDni;
-        private static List<int> lTarjetas;
+        private static List<long> lTarjetas;
         private static List<String> lPeliculas;
 
         public static string VUsername { get => vUsername; set => vUsername = value; }
         public static string VPassword { get => vPassword; set => vPassword = value; }
         public static int VDni { get => vDni; set => vDni = value; }
-        public static List<int> LTarjetas { get => lTarjetas; set => lTarjetas = value; }
+        public static List<long> LTarjetas { get => lTarjetas; set => lTarjetas = value; }
         public static List<string> LPeliculas { get => lPeliculas; set => lPeliculas = value; }
 
         public MO_Usuario fn_LoginUsuario(MO_Usuario pUsuario)

@@ -14,7 +14,7 @@ namespace Cinemas2001.Modelo
     
     public partial class Tarjeta_Credito
     {
-        public int Numero_Tarjeta { get; set; }
+        public long Numero_Tarjeta { get; set; }
         public int ID_Usuario { get; set; }
         public int CVO { get; set; }
     

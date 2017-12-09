@@ -23,7 +23,7 @@ namespace Cinemas2001
         private void btnAgregarTC_Click(object sender, EventArgs e)
         {
             MO_Tarjeta_Credito iTarjeta = new MO_Tarjeta_Credito();
-            iTarjeta.Numero_Tarjeta = Convert.ToInt32(this.txtBNumTarjeta.Text);
+            iTarjeta.Numero_Tarjeta = Convert.ToInt64(this.txtBNumTarjeta.Text);
             iTarjeta.Cvo = Convert.ToInt32(this.txtBCVO.Text);
             if (iLogica_Negocio.fn_Registro_Tarjeta(iTarjeta))
             {

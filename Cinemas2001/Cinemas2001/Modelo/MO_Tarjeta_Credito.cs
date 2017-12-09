@@ -8,7 +8,8 @@ namespace Cinemas2001.Modelo
 {
     class MO_Tarjeta_Credito
     {
-        private int numero_Tarjeta, id_Usuario, cvo;
+        private int id_Usuario, cvo;
+        private long numero_Tarjeta;
         private Usuario vUsuario;
 
         public MO_Tarjeta_Credito() { }
@@ -20,9 +21,9 @@ namespace Cinemas2001.Modelo
             this.Cvo = cvo;
         }
 
-        public int Numero_Tarjeta { get => numero_Tarjeta; set => numero_Tarjeta = value; }
         public int Id_Usuario { get => id_Usuario; set => id_Usuario = value; }
         public int Cvo { get => cvo; set => cvo = value; }
         public Usuario VUsuario { get => vUsuario; set => vUsuario = value; }
+        public long Numero_Tarjeta { get => numero_Tarjeta; set => numero_Tarjeta = value; }
     }
 }

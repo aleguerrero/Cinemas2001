@@ -111,6 +111,7 @@ namespace Cinemas2001
                 first = true;
             } else
             {
+                this.cmbHorario.Enabled = true;
                 this.cmbHorario.DataSource = iLN.fn_Cargar_Horarios(this.cmbPeliculas.Text);
             }
         }
@@ -245,5 +246,12 @@ namespace Cinemas2001
             new MenuPrincipal().ShowDialog();
             this.Close();
         }
+
+        private void cmbSede_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.cmbPeliculas.Enabled = true;
+        }
+
+        
     }
 }

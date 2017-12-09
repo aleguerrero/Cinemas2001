@@ -76,7 +76,7 @@
           <Key>
             <PropertyRef Name="Numero_Tarjeta" />
           </Key>
-          <Property Name="Numero_Tarjeta" Type="int" Nullable="false" />
+          <Property Name="Numero_Tarjeta" Type="bigint" Nullable="false" />
           <Property Name="ID_Usuario" Type="int" Nullable="false" />
           <Property Name="CVO" Type="int" Nullable="false" />
         </EntityType>
@@ -347,7 +347,7 @@
           <Key>
             <PropertyRef Name="Numero_Tarjeta" />
           </Key>
-          <Property Name="Numero_Tarjeta" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Tarjeta" Type="Int64" Nullable="false" />
           <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
           <Property Name="CVO" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Tarjeta_Credito_Usuario" FromRole="Tarjeta_Credito" ToRole="Usuario" />

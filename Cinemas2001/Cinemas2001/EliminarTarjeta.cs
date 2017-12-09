@@ -28,7 +28,7 @@ namespace Cinemas2001
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             MO_Tarjeta_Credito iTarjeta = new MO_Tarjeta_Credito();
-            iTarjeta.Numero_Tarjeta = Convert.ToInt32(cmbSelecTarjeta.SelectedItem.ToString());
+            iTarjeta.Numero_Tarjeta = Convert.ToInt64(cmbSelecTarjeta.SelectedItem.ToString());
             if(iLogica_Negocio.fn_Eliminar_Tarjeta(iTarjeta))
             {
                 MessageBox.Show("Tarjeta eliminada con éxito", "Registro Tarjetas", MessageBoxButtons.OK, MessageBoxIcon.Information);

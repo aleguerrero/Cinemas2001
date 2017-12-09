@@ -25,5 +25,12 @@ namespace Cinemas2001
         {
             this.dataHistorial.DataSource = iLN.fn_Consulta_Historial();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuPrincipal().ShowDialog();
+            this.Close();
+        }
     }
 }
