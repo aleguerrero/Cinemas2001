@@ -15,7 +15,8 @@ namespace Cinemas2001
 {
     public partial class Login : Form
     {
-        LN_Login iLn_Login = new LN_Login();
+        LN_Cinemas2001 iLn_Login = new LN_Cinemas2001();
+        Seguridad iSeguridad = new Seguridad();
         public Login()
         {
             InitializeComponent();
@@ -23,22 +24,29 @@ namespace Cinemas2001
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MO_Usuario oUsuario = new MO_Usuario();
-            oUsuario.Username = txtUser.Text;
-            oUsuario.Contrasena = txtPass.Text;
-            MO_Usuario iUsuario = iLn_Login.fn_LoginUsuario(oUsuario);
-            if (iUsuario.Nombre != null)
+            try
             {
-                MenuPrincipal ventana = new MenuPrincipal(iUsuario.Nombre);
-                ventana.Closed += (sender1, args) => this.Close();
-                ventana.Show();
-                this.Hide();
-                // ↑ esto es para cargar el siguiente form y darle como la capacidad de cerrar el programa, de otra forma no lo logra.
-
-            } else
+                MO_Usuario oUsuario = new MO_Usuario();
+                oUsuario.Username = txtUser.Text;
+                oUsuario.Contrasena = txtPass.Text;
+                MO_Usuario iUsuario = iLn_Login.fn_LoginUsuario(oUsuario);
+                if (iUsuario.Nombre != null)
+                {
+                    MessageBox.Show("Bienvenido " + iUsuario.Nombre + " " + iUsuario.Apellidos, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } catch (Exception y)
             {
                 MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,9 +55,8 @@ namespace Cinemas2001
             pUsuario.Nombre = txt_R_Nombre.Text;
             pUsuario.Apellidos = txt_R_Apellidos.Text;
             pUsuario.Username = txt_R_Username.Text;
-            pUsuario.Dni = Convert.ToInt32(txt_R_DNI.Text);
             pUsuario.FechaDeNacimiento = Convert.ToDateTime(dtp_R_Fecha.Text);
-            pUsuario.Contrasena = txt_R_Contra.Text;
+            pUsuario.Contrasena = iSeguridad.fn_cifrar(this.txt_R_Contra.Text);
 
             if (iLn_Login.fn_Registro_Usuario(pUsuario))
             {

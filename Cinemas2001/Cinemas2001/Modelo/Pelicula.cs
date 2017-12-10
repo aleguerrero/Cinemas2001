@@ -17,21 +17,15 @@ namespace Cinemas2001.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pelicula()
         {
-            this.Horario = new HashSet<Horario>();
+            this.Horarios = new HashSet<Horario>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public System.TimeSpan Duracion { get; set; }
-        public int ID_Categoria { get; set; }
-        public string Descripcion { get; set; }
-        public int ID_Director { get; set; }
-        public int ID_Estudio { get; set; }
+        public string Categoria { get; set; }
     
-        public virtual Categoria Categoria { get; set; }
-        public virtual Director Director { get; set; }
-        public virtual Estudio Estudio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Horario> Horario { get; set; }
+        public virtual ICollection<Horario> Horarios { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Cinemas2001
     public partial class EditarInformacion : Form
     {
 
-        LN_Login iLogica_Negocio = new LN_Login();
+        LN_Cinemas2001 iLogica_Negocio = new LN_Cinemas2001();
 
         public EditarInformacion()
         {
@@ -28,7 +28,6 @@ namespace Cinemas2001
             iUsuario = iLogica_Negocio.fn_Usuario_En_Sesión();
             txtNombre.Text = iUsuario.Nombre;
             txtApellidos.Text = iUsuario.Apellidos;
-            txtDNI.Text = Convert.ToString(iUsuario.Dni);
             txtUsername.Text = iUsuario.Username;
         }
 
@@ -37,7 +36,6 @@ namespace Cinemas2001
             MO_Usuario iUsuario = new MO_Usuario();
             iUsuario.Nombre = this.txtNombre.Text;
             iUsuario.Apellidos = this.txtApellidos.Text;
-            iUsuario.Dni = Convert.ToInt32(this.txtDNI.Text);
             iUsuario.Username = this.txtUsername.Text;
             if (iLogica_Negocio.fn_Editar_Usuario(iUsuario))
             {

@@ -12,20 +12,18 @@ namespace Cinemas2001.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class Asiento
+    public partial class Fila_Asiento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Asiento()
+        public Fila_Asiento()
         {
-            this.Asiento_Horario = new HashSet<Asiento_Horario>();
+            this.Asientoes = new HashSet<Asiento>();
         }
     
-        public int ID_Asiento { get; set; }
         public int ID_Fila_Asiento { get; set; }
-        public int Num_Asiento { get; set; }
+        public string Fila_Asiento1 { get; set; }
     
-        public virtual Fila_Asiento Fila_Asiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asiento_Horario> Asiento_Horario { get; set; }
+        public virtual ICollection<Asiento> Asientoes { get; set; }
     }
 }

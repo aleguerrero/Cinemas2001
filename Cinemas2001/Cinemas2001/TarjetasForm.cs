@@ -14,7 +14,7 @@ namespace Cinemas2001
 {
     public partial class TarjetasForm : Form
     {
-        LN_Login iLogica_Negocio = new LN_Login();
+        LN_Cinemas2001 iLogica_Negocio = new LN_Cinemas2001();
         public TarjetasForm()
         {
             InitializeComponent();
@@ -45,5 +45,6 @@ namespace Cinemas2001
             new EliminarTarjeta().ShowDialog();
             this.Close();
         }
+
     }
 }

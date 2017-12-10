@@ -14,7 +14,7 @@ namespace Cinemas2001
 {
     public partial class EliminarTarjeta : Form
     {
-        LN_Login iLogica_Negocio = new LN_Login();
+        LN_Cinemas2001 iLogica_Negocio = new LN_Cinemas2001();
         public EliminarTarjeta()
         {
             InitializeComponent();
@@ -22,13 +22,13 @@ namespace Cinemas2001
 
         private void EliminarTarjeta_Load(object sender, EventArgs e)
         {
-            cmbSelecTarjeta.DataSource = LN_Login.LTarjetas;
+            cmbSelecTarjeta.DataSource = LN_Cinemas2001.LTarjetas;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             MO_Tarjeta_Credito iTarjeta = new MO_Tarjeta_Credito();
-            iTarjeta.Numero_Tarjeta = Convert.ToInt32(cmbSelecTarjeta.SelectedItem.ToString());
+            iTarjeta.Numero_Tarjeta = Convert.ToInt64(cmbSelecTarjeta.SelectedItem.ToString());
             if(iLogica_Negocio.fn_Eliminar_Tarjeta(iTarjeta))
             {
                 MessageBox.Show("Tarjeta eliminada con éxito", "Registro Tarjetas", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -36,13 +36,13 @@
             this.ticketTableAdapter = new Cinemas2001.CineDataSetTableAdapters.TicketTableAdapter();
             this.tarjeta_CreditoTableAdapter = new Cinemas2001.CineDataSetTableAdapters.Tarjeta_CreditoTableAdapter();
             this.tbTarjetasC = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarjeta_CreditoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAgregarT = new System.Windows.Forms.Button();
             this.btnEliminarT = new System.Windows.Forms.Button();
             this.btnAtrasT = new System.Windows.Forms.Button();
+            this.tarjeta_CreditoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mO_UsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tarjetaCreditoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cineDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cineDataSet)).BeginInit();
@@ -91,17 +91,58 @@
             this.dataGridViewTextBoxColumn3});
             this.tbTarjetasC.DataSource = this.tarjeta_CreditoBindingSource;
             this.tbTarjetasC.Enabled = false;
-            this.tbTarjetasC.Location = new System.Drawing.Point(26, 31);
-            this.tbTarjetasC.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTarjetasC.Location = new System.Drawing.Point(35, 38);
+            this.tbTarjetasC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbTarjetasC.Name = "tbTarjetasC";
             this.tbTarjetasC.RowTemplate.Height = 24;
-            this.tbTarjetasC.Size = new System.Drawing.Size(257, 182);
+            this.tbTarjetasC.Size = new System.Drawing.Size(343, 224);
             this.tbTarjetasC.TabIndex = 0;
+            // 
+            // btnAgregarT
+            // 
+            this.btnAgregarT.Location = new System.Drawing.Point(69, 295);
+            this.btnAgregarT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAgregarT.Name = "btnAgregarT";
+            this.btnAgregarT.Size = new System.Drawing.Size(131, 28);
+            this.btnAgregarT.TabIndex = 1;
+            this.btnAgregarT.Text = "Agregar Tarjeta";
+            this.btnAgregarT.UseVisualStyleBackColor = true;
+            this.btnAgregarT.Click += new System.EventHandler(this.btnAgregarT_Click);
+            // 
+            // btnEliminarT
+            // 
+            this.btnEliminarT.Location = new System.Drawing.Point(211, 295);
+            this.btnEliminarT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminarT.Name = "btnEliminarT";
+            this.btnEliminarT.Size = new System.Drawing.Size(131, 28);
+            this.btnEliminarT.TabIndex = 2;
+            this.btnEliminarT.Text = "Eliminar Tarjeta";
+            this.btnEliminarT.UseVisualStyleBackColor = true;
+            this.btnEliminarT.Click += new System.EventHandler(this.btnEliminarT_Click);
+            // 
+            // btnAtrasT
+            // 
+            this.btnAtrasT.Location = new System.Drawing.Point(140, 346);
+            this.btnAtrasT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAtrasT.Name = "btnAtrasT";
+            this.btnAtrasT.Size = new System.Drawing.Size(131, 28);
+            this.btnAtrasT.TabIndex = 4;
+            this.btnAtrasT.Text = "Atrás";
+            this.btnAtrasT.UseVisualStyleBackColor = true;
+            this.btnAtrasT.Click += new System.EventHandler(this.btnAtrasT_Click);
+            // 
+            // tarjeta_CreditoBindingSource
+            // 
+            this.tarjeta_CreditoBindingSource.DataSource = typeof(Cinemas2001.Modelo.Tarjeta_Credito);
+            // 
+            // mO_UsuarioBindingSource
+            // 
+            this.mO_UsuarioBindingSource.DataSource = typeof(Cinemas2001.Modelo.MO_Usuario);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Numero_Tarjeta";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Numero_Tarjeta";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Número Tarjeta";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // dataGridViewTextBoxColumn3
@@ -110,57 +151,16 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "CVO";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // tarjeta_CreditoBindingSource
-            // 
-            this.tarjeta_CreditoBindingSource.DataSource = typeof(Cinemas2001.Modelo.Tarjeta_Credito);
-            // 
-            // btnAgregarT
-            // 
-            this.btnAgregarT.Location = new System.Drawing.Point(52, 240);
-            this.btnAgregarT.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarT.Name = "btnAgregarT";
-            this.btnAgregarT.Size = new System.Drawing.Size(98, 23);
-            this.btnAgregarT.TabIndex = 1;
-            this.btnAgregarT.Text = "Agregar Tarjeta";
-            this.btnAgregarT.UseVisualStyleBackColor = true;
-            this.btnAgregarT.Click += new System.EventHandler(this.btnAgregarT_Click);
-            // 
-            // btnEliminarT
-            // 
-            this.btnEliminarT.Location = new System.Drawing.Point(158, 240);
-            this.btnEliminarT.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminarT.Name = "btnEliminarT";
-            this.btnEliminarT.Size = new System.Drawing.Size(98, 23);
-            this.btnEliminarT.TabIndex = 2;
-            this.btnEliminarT.Text = "Eliminar Tarjeta";
-            this.btnEliminarT.UseVisualStyleBackColor = true;
-            this.btnEliminarT.Click += new System.EventHandler(this.btnEliminarT_Click);
-            // 
-            // btnAtrasT
-            // 
-            this.btnAtrasT.Location = new System.Drawing.Point(105, 281);
-            this.btnAtrasT.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAtrasT.Name = "btnAtrasT";
-            this.btnAtrasT.Size = new System.Drawing.Size(98, 23);
-            this.btnAtrasT.TabIndex = 4;
-            this.btnAtrasT.Text = "Atrás";
-            this.btnAtrasT.UseVisualStyleBackColor = true;
-            this.btnAtrasT.Click += new System.EventHandler(this.btnAtrasT_Click);
-            // 
-            // mO_UsuarioBindingSource
-            // 
-            this.mO_UsuarioBindingSource.DataSource = typeof(Cinemas2001.Modelo.MO_Usuario);
-            // 
             // TarjetasForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 336);
+            this.ClientSize = new System.Drawing.Size(411, 414);
             this.Controls.Add(this.btnAtrasT);
             this.Controls.Add(this.btnEliminarT);
             this.Controls.Add(this.btnAgregarT);
             this.Controls.Add(this.tbTarjetasC);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TarjetasForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarjetas Registradas";
@@ -186,10 +186,10 @@
         private System.Windows.Forms.BindingSource mO_UsuarioBindingSource;
         private System.Windows.Forms.BindingSource tarjeta_CreditoBindingSource;
         private System.Windows.Forms.DataGridView tbTarjetasC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button btnAgregarT;
         private System.Windows.Forms.Button btnEliminarT;
         private System.Windows.Forms.Button btnAtrasT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
