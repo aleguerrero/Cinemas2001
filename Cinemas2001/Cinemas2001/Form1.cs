@@ -24,21 +24,29 @@ namespace Cinemas2001
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MO_Usuario oUsuario = new MO_Usuario();
-            oUsuario.Username = txtUser.Text;
-            oUsuario.Contrasena = txtPass.Text;
-            MO_Usuario iUsuario = iLn_Login.fn_LoginUsuario(oUsuario);
-            if (iUsuario.Nombre != null)
+            try
             {
-                MessageBox.Show("Bienvenido " + iUsuario.Nombre + " " + iUsuario.Apellidos, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-                MenuPrincipal menu = new MenuPrincipal();
-                menu.ShowDialog();
-                this.Close();
-            } else
+                MO_Usuario oUsuario = new MO_Usuario();
+                oUsuario.Username = txtUser.Text;
+                oUsuario.Contrasena = txtPass.Text;
+                MO_Usuario iUsuario = iLn_Login.fn_LoginUsuario(oUsuario);
+                if (iUsuario.Nombre != null)
+                {
+                    MessageBox.Show("Bienvenido " + iUsuario.Nombre + " " + iUsuario.Apellidos, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } catch (Exception y)
             {
                 MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

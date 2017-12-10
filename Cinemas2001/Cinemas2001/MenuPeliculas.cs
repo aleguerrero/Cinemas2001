@@ -106,14 +106,8 @@ namespace Cinemas2001
 
         private void cmbPeliculas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (first == false)
-            {
-                first = true;
-            } else
-            {
-                this.cmbHorario.Enabled = true;
-                this.cmbHorario.DataSource = iLN.fn_Cargar_Horarios(this.cmbPeliculas.Text, this.cmbSede.Text);
-            }
+            this.cmbHorario.Enabled = true;
+            this.cmbHorario.DataSource = iLN.fn_Cargar_Horarios(this.cmbPeliculas.Text, this.cmbSede.Text);
         }
 
         private void cmbF1_SelectedIndexChanged(object sender, EventArgs e)

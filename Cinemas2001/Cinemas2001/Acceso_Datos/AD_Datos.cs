@@ -161,7 +161,6 @@ namespace Cinemas2001.Acceso_Datos
                     sUsuario = contexto.Usuarios.Where(cL => cL.DNI == pDNI).First();
                     sUsuario.Nombre = pUsuario.Nombre;
                     sUsuario.Apellidos = pUsuario.Apellidos;
-                    sUsuario.DNI = pUsuario.DNI;
                     sUsuario.Username = pUsuario.Username;
                     contexto.Entry(sUsuario).State = System.Data.Entity.EntityState.Modified;
                     contexto.SaveChanges();

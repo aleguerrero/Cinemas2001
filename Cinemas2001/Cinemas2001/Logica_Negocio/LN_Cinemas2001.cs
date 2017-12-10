@@ -77,9 +77,10 @@ namespace Cinemas2001.Logica_Negocio
             if (pPassAnt == VPassword)
             {
                 Usuario iUsuario = new Usuario();
-                iUsuario.Password = VPassword;
+                iUsuario.Password = new Seguridad().fn_cifrar(VPassword);
                 iUsuario.Username = VUsername;
                 VPassword = pPassNueva;
+                pPassNueva = new Seguridad().fn_cifrar(pPassNueva);
                 return iAccesoDatos.fn_Cambiar_Password(iUsuario, pPassNueva);
             } else
             {
