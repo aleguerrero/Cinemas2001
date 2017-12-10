@@ -27,15 +27,20 @@ namespace Cinemas2001.Logica_Negocio
             Usuario iUsuario = new Usuario();
             iUsuario.Username = pUsuario.Username;
             VUsername = pUsuario.Username;
-            iUsuario.Password = pUsuario.Contrasena;
             VPassword = pUsuario.Contrasena;
 
             iUsuario = iAccesoDatos.fn_Login(iUsuario);
-            MO_Usuario sUsuario = new MO_Usuario();
-            sUsuario.Nombre = iUsuario.Nombre;
-            sUsuario.Apellidos = iUsuario.Apellidos;
-            VDni = iUsuario.DNI;
-            return sUsuario;
+            if (new Seguridad().fn_decifrar(iUsuario.Password) == pUsuario.Contrasena)
+            {
+                MO_Usuario sUsuario = new MO_Usuario();
+                sUsuario.Nombre = iUsuario.Nombre;
+                sUsuario.Apellidos = iUsuario.Apellidos;
+                VDni = iUsuario.DNI;
+                return sUsuario;
+            } else
+            {
+                return null;
+            }
         }
 
         public Boolean fn_Registro_Usuario(MO_Usuario pUsuario)
@@ -55,7 +60,7 @@ namespace Cinemas2001.Logica_Negocio
         {
             Usuario iUsuario = new Usuario();
             iUsuario.Username = VUsername;
-            iUsuario.Password = VPassword;
+            iUsuario.Password = new Seguridad().fn_cifrar(VPassword);
             iUsuario = iAccesoDatos.fn_Usuario_Sesion(iUsuario);
 
             MO_Usuario sUsuario = new MO_Usuario();
@@ -140,12 +145,12 @@ namespace Cinemas2001.Logica_Negocio
             }
         }
 
-        public List<string> fn_Cargar_Horarios(string pPelicula)
+        public List<string> fn_Cargar_Horarios(string pPelicula, string pSede)
         {
             List<string> iHorarios = new List<string>();
             try
             {
-                iHorarios = iAccesoDatos.fn_Consulta_Horarios(pPelicula);
+                iHorarios = iAccesoDatos.fn_Consulta_Horarios(pPelicula, pSede);
                 return iHorarios;
             }
             catch (Exception e)
@@ -196,6 +201,22 @@ namespace Cinemas2001.Logica_Negocio
             } catch (Exception e)
             {
                 return null;
+            }
+        }
+
+        public Boolean fn_Cerrar_Sesion()
+        {
+            try
+            {
+                //Limpia campos 
+                VUsername = "";
+                VPassword = "";
+                VDni = 0;
+
+                return true;
+            } catch (Exception e)
+            {
+                return false;
             }
         }
     }

@@ -112,7 +112,7 @@ namespace Cinemas2001
             } else
             {
                 this.cmbHorario.Enabled = true;
-                this.cmbHorario.DataSource = iLN.fn_Cargar_Horarios(this.cmbPeliculas.Text);
+                this.cmbHorario.DataSource = iLN.fn_Cargar_Horarios(this.cmbPeliculas.Text, this.cmbSede.Text);
             }
         }
 

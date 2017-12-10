@@ -91,6 +91,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Logica_Negocio\LN_Cinemas2001.cs" />
+    <Compile Include="Logica_Negocio\Seguridad.cs" />
     <Compile Include="MenuClientecs.cs">
       <SubType>Form</SubType>
     </Compile>

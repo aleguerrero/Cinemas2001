@@ -19,7 +19,7 @@ namespace Cinemas2001.Acceso_Datos
                 try
                 {
                     contexto.Database.Connection.Open();
-                    sUsuario = contexto.Usuarios.Where(cL => cL.Username == pUsuario.Username && cL.Password == pUsuario.Password).First();
+                    sUsuario = contexto.Usuarios.Where(cL => cL.Username == pUsuario.Username).First();
                 } catch (Exception e)
                 {
 
@@ -30,14 +30,22 @@ namespace Cinemas2001.Acceso_Datos
 
         public Boolean fn_registro_usuario(Usuario pUsuario)
         {
+            List <string> vComprobacion;
             using (Cinemas2001Entities contexto = new Cinemas2001Entities())
             {
                 try
                 {
                     contexto.Database.Connection.Open();
-                    contexto.Usuarios.Add(pUsuario);
-                    contexto.SaveChanges();
-                    return true;
+                    if (contexto.Usuarios.Select(u => u.Username == pUsuario.Username).First())
+                    {
+                        return false;
+                    } else
+                    {
+                        contexto.Usuarios.Add(pUsuario);
+                        contexto.SaveChanges();
+                        return true;
+                    }
+                    
                 }
                 catch (Exception e)
                 {
@@ -184,7 +192,7 @@ namespace Cinemas2001.Acceso_Datos
             }
         }
 
-        public List<String> fn_Consulta_Horarios(string pPelicula)
+        public List<String> fn_Consulta_Horarios(string pPelicula, string pSede)
         {
             int vIDPelicula;
             List<String> vHorarios = new List<String>();
@@ -194,7 +202,27 @@ namespace Cinemas2001.Acceso_Datos
                 {
                     contexto.Database.Connection.Open();
                     vIDPelicula = contexto.Peliculas.Where(p => p.Nombre == pPelicula).Select(p => p.ID).First();
-                    vHorarios = contexto.Horarios.Where(h => h.id_pelicula == vIDPelicula).Select(h => h.fecha_horario.ToString()).ToList();
+                    string vIDSede = contexto.Sedes.Where(se => se.Nombre == pSede).Select(se => se.ID).First();
+                    List<string> vIDSala = contexto.Salas.Where(sa => sa.ID_Sede == vIDSede).Select(sa => sa.ID).ToList();
+                    List<int> vIDHorarios = contexto.Horarios.Select(h => h.id).ToList();
+
+                    for (int i = 0; i < vIDSala.Count; i++)
+                    {
+                        for (int j = 0; j < vIDHorarios.Count; j++)
+                        {
+                            try
+                            {
+                                string vIDSa = vIDSala.ElementAt(i);
+                                int vIDHorario = vIDHorarios.ElementAt(j);
+                                vHorarios.Add(contexto.Horarios.Where(h => h.id == vIDHorario && h.id_pelicula == vIDPelicula && h.id_sala == vIDSa).Select(h => h.fecha_horario.ToString()).First());
+                            }
+                            catch (Exception e)
+                            {
+
+                            }
+                        }    
+                    }
+                    
                     return vHorarios;
                 } catch (Exception e)
                 {
@@ -240,7 +268,7 @@ namespace Cinemas2001.Acceso_Datos
                         try
                         {
                             int vIDA = vIDAsiento.ElementAt(i);
-                            lAsientos.Add(contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFila && a.ID == vIDA).
+                            lAsientos.Add(contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFila && a.ID_Asiento == vIDA).
                                 Select(a => a.Num_Asiento.ToString()).
                                 First());
                         } catch (Exception e)
@@ -302,7 +330,7 @@ namespace Cinemas2001.Acceso_Datos
                     vIDFilaAsiento = contexto.Fila_Asiento.Where(fa => fa.Fila_Asiento1 == pFilaAsiento).Select(fa => fa.ID_Fila_Asiento).First();
 
                     //Cambia disponibilidad
-                    vAsiento = contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFilaAsiento && a.Num_Asiento == pAsiento).Select(a => a.ID).ToList();
+                    vAsiento = contexto.Asientoes.Where(a => a.ID_Fila_Asiento == vIDFilaAsiento && a.Num_Asiento == pAsiento).Select(a => a.ID_Asiento).ToList();
                     int vPelicula = contexto.Peliculas.Where(p => p.Nombre == pPelicula).Select(p => p.ID).First();
                     string vSede = contexto.Sedes.Where(se => se.Nombre == pSede).Select(se => se.ID).First();
                     List <string> vIDSalas = contexto.Salas.Where(sa => sa.ID_Sede == vSede).Select(sa => sa.ID).ToList();

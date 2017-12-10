@@ -20,7 +20,7 @@ namespace Cinemas2001.Modelo
             this.Asiento_Horario = new HashSet<Asiento_Horario>();
         }
     
-        public int ID { get; set; }
+        public int ID_Asiento { get; set; }
         public int ID_Fila_Asiento { get; set; }
         public int Num_Asiento { get; set; }
     

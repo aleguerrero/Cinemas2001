@@ -16,6 +16,7 @@ namespace Cinemas2001
     public partial class Login : Form
     {
         LN_Cinemas2001 iLn_Login = new LN_Cinemas2001();
+        Seguridad iSeguridad = new Seguridad();
         public Login()
         {
             InitializeComponent();
@@ -46,9 +47,8 @@ namespace Cinemas2001
             pUsuario.Nombre = txt_R_Nombre.Text;
             pUsuario.Apellidos = txt_R_Apellidos.Text;
             pUsuario.Username = txt_R_Username.Text;
-            pUsuario.Dni = Convert.ToInt32(txt_R_DNI.Text);
             pUsuario.FechaDeNacimiento = Convert.ToDateTime(dtp_R_Fecha.Text);
-            pUsuario.Contrasena = txt_R_Contra.Text;
+            pUsuario.Contrasena = iSeguridad.fn_cifrar(this.txt_R_Contra.Text);
 
             if (iLn_Login.fn_Registro_Usuario(pUsuario))
             {

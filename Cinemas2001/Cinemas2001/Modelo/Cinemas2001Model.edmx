@@ -7,9 +7,9 @@
       <Schema Namespace="Cinemas2001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Asiento">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_Asiento" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Asiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Fila_Asiento" Type="int" Nullable="false" />
           <Property Name="Num_Asiento" Type="int" Nullable="false" />
         </EntityType>
@@ -42,7 +42,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Duracion" Type="time" Precision="7" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="20" Nullable="false" />
@@ -96,12 +96,12 @@
           </Key>
           <Property Name="Nombre" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="Apellidos" Type="varchar" MaxLength="70" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="DNI" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="DNI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Fecha_Nacimiento" Type="date" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Asiento_Asiento">
+        <Association Name="FK_Asiento_Fila_Asiento">
           <End Role="Fila_Asiento" Type="Self.Fila_Asiento" Multiplicity="1" />
           <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -113,12 +113,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Asiento_Horario_Asiento_Horario">
+        <Association Name="FK_Asiento_Horario_Asiento">
           <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
           <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Asiento">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_Asiento" />
             </Principal>
             <Dependent Role="Asiento_Horario">
               <PropertyRef Name="id_Asiento" />
@@ -221,11 +221,11 @@
           <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Asiento_Asiento" Association="Self.FK_Asiento_Asiento">
+          <AssociationSet Name="FK_Asiento_Fila_Asiento" Association="Self.FK_Asiento_Fila_Asiento">
             <End Role="Fila_Asiento" EntitySet="Fila_Asiento" />
             <End Role="Asiento" EntitySet="Asiento" />
           </AssociationSet>
-          <AssociationSet Name="FK_Asiento_Horario_Asiento_Horario" Association="Self.FK_Asiento_Horario_Asiento_Horario">
+          <AssociationSet Name="FK_Asiento_Horario_Asiento" Association="Self.FK_Asiento_Horario_Asiento">
             <End Role="Asiento" EntitySet="Asiento" />
             <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
           </AssociationSet>
@@ -265,13 +265,13 @@
       <Schema Namespace="Cinemas2001Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Asiento">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_Asiento" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Asiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Fila_Asiento" Type="Int32" Nullable="false" />
           <Property Name="Num_Asiento" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Fila_Asiento" Relationship="Self.FK_Asiento_Asiento" FromRole="Asiento" ToRole="Fila_Asiento" />
-          <NavigationProperty Name="Asiento_Horario" Relationship="Self.FK_Asiento_Horario_Asiento_Horario" FromRole="Asiento" ToRole="Asiento_Horario" />
+          <NavigationProperty Name="Fila_Asiento" Relationship="Self.FK_Asiento_Fila_Asiento" FromRole="Asiento" ToRole="Fila_Asiento" />
+          <NavigationProperty Name="Asiento_Horario" Relationship="Self.FK_Asiento_Horario_Asiento" FromRole="Asiento" ToRole="Asiento_Horario" />
         </EntityType>
         <EntityType Name="Asiento_Horario">
           <Key>
@@ -281,7 +281,7 @@
           <Property Name="id_Asiento" Type="Int32" Nullable="false" />
           <Property Name="id_Horario" Type="Int32" Nullable="false" />
           <Property Name="Disponibilidad" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Asiento" Relationship="Self.FK_Asiento_Horario_Asiento_Horario" FromRole="Asiento_Horario" ToRole="Asiento" />
+          <NavigationProperty Name="Asiento" Relationship="Self.FK_Asiento_Horario_Asiento" FromRole="Asiento_Horario" ToRole="Asiento" />
           <NavigationProperty Name="Horario" Relationship="Self.FK_Asiento_Horario_Horario" FromRole="Asiento_Horario" ToRole="Horario" />
         </EntityType>
         <EntityType Name="Fila_Asiento">
@@ -290,7 +290,7 @@
           </Key>
           <Property Name="ID_Fila_Asiento" Type="Int32" Nullable="false" />
           <Property Name="Fila_Asiento1" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Asientoes" Relationship="Self.FK_Asiento_Asiento" FromRole="Fila_Asiento" ToRole="Asiento" />
+          <NavigationProperty Name="Asientoes" Relationship="Self.FK_Asiento_Fila_Asiento" FromRole="Fila_Asiento" ToRole="Asiento" />
         </EntityType>
         <EntityType Name="Horario">
           <Key>
@@ -309,7 +309,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Duracion" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Categoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -370,14 +370,14 @@
           </Key>
           <Property Name="Nombre" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellidos" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DNI" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tarjeta_Credito" Relationship="Self.FK_Tarjeta_Credito_Usuario" FromRole="Usuario" ToRole="Tarjeta_Credito" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Ticket" FromRole="Usuario" ToRole="Ticket" />
         </EntityType>
-        <Association Name="FK_Asiento_Asiento">
+        <Association Name="FK_Asiento_Fila_Asiento">
           <End Role="Fila_Asiento" Type="Self.Fila_Asiento" Multiplicity="1" />
           <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -389,12 +389,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Asiento_Horario_Asiento_Horario">
+        <Association Name="FK_Asiento_Horario_Asiento">
           <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
           <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Asiento">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_Asiento" />
             </Principal>
             <Dependent Role="Asiento_Horario">
               <PropertyRef Name="id_Asiento" />
@@ -497,11 +497,11 @@
           <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" />
           <EntitySet Name="Tickets" EntityType="Self.Ticket" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK_Asiento_Asiento" Association="Self.FK_Asiento_Asiento">
+          <AssociationSet Name="FK_Asiento_Fila_Asiento" Association="Self.FK_Asiento_Fila_Asiento">
             <End Role="Fila_Asiento" EntitySet="Fila_Asiento" />
             <End Role="Asiento" EntitySet="Asientoes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Asiento_Horario_Asiento_Horario" Association="Self.FK_Asiento_Horario_Asiento_Horario">
+          <AssociationSet Name="FK_Asiento_Horario_Asiento" Association="Self.FK_Asiento_Horario_Asiento">
             <End Role="Asiento" EntitySet="Asientoes" />
             <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
           </AssociationSet>
@@ -543,7 +543,7 @@
           <EntitySetMapping Name="Asientoes">
             <EntityTypeMapping TypeName="Cinemas2001Model.Asiento">
               <MappingFragment StoreEntitySet="Asiento">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Asiento" ColumnName="ID_Asiento" />
                 <ScalarProperty Name="ID_Fila_Asiento" ColumnName="ID_Fila_Asiento" />
                 <ScalarProperty Name="Num_Asiento" ColumnName="Num_Asiento" />
               </MappingFragment>
