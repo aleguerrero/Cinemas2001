@@ -18,7 +18,7 @@ namespace Cinemas2001.Modelo
         public Usuario()
         {
             this.Tarjeta_Credito = new HashSet<Tarjeta_Credito>();
-            this.Ticket = new HashSet<Ticket>();
+            this.Tickets = new HashSet<Ticket>();
         }
     
         public string Nombre { get; set; }
@@ -31,6 +31,6 @@ namespace Cinemas2001.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tarjeta_Credito> Tarjeta_Credito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

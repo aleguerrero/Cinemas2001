@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Cinemas2001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asiento">
+          <Key>
+            <PropertyRef Name="ID_Asiento" />
+          </Key>
+          <Property Name="ID_Asiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Fila_Asiento" Type="int" Nullable="false" />
+          <Property Name="Num_Asiento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asiento_Horario">
+          <Key>
+            <PropertyRef Name="id_Asiento_Horario" />
+          </Key>
+          <Property Name="id_Asiento_Horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Asiento" Type="int" Nullable="false" />
+          <Property Name="id_Horario" Type="int" Nullable="false" />
+          <Property Name="Disponibilidad" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fila_Asiento">
+          <Key>
+            <PropertyRef Name="ID_Fila_Asiento" />
+          </Key>
+          <Property Name="ID_Fila_Asiento" Type="int" Nullable="false" />
+          <Property Name="Fila_Asiento" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pelicula" Type="int" Nullable="false" />
+          <Property Name="fecha_horario" Type="time" Precision="4" Nullable="false" />
+          <Property Name="id_sala" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Duracion" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="ID_Sede" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Num_Sala" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tarjeta_Credito">
+          <Key>
+            <PropertyRef Name="Numero_Tarjeta" />
+          </Key>
+          <Property Name="Numero_Tarjeta" Type="bigint" Nullable="false" />
+          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+          <Property Name="CVO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="id_Ticket" />
+          </Key>
+          <Property Name="id_Ticket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Usuario" Type="int" Nullable="false" />
+          <Property Name="id_Horario" Type="int" Nullable="false" />
+          <Property Name="nom_pelicula" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="horario" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="DNI" />
+          </Key>
+          <Property Name="Nombre" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="DNI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha_Nacimiento" Type="date" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Asiento_Fila_Asiento">
+          <End Role="Fila_Asiento" Type="Self.Fila_Asiento" Multiplicity="1" />
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fila_Asiento">
+              <PropertyRef Name="ID_Fila_Asiento" />
+            </Principal>
+            <Dependent Role="Asiento">
+              <PropertyRef Name="ID_Fila_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_Horario_Asiento">
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiento">
+              <PropertyRef Name="ID_Asiento" />
+            </Principal>
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_Horario_Horario">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Pelicula">
+          <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelicula">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="id_pelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Sala">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Sede">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Sala" Type="Self.Sala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sala">
+              <PropertyRef Name="ID_Sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarjeta_Credito_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Tarjeta_Credito" Type="Self.Tarjeta_Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="Tarjeta_Credito">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Horario">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="id_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Ticket">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cinemas2001ModelStoreContainer">
+          <EntitySet Name="Asiento" EntityType="Self.Asiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asiento_Horario" EntityType="Self.Asiento_Horario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fila_Asiento" EntityType="Self.Fila_Asiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pelicula" EntityType="Self.Pelicula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sala" EntityType="Self.Sala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Asiento_Fila_Asiento" Association="Self.FK_Asiento_Fila_Asiento">
+            <End Role="Fila_Asiento" EntitySet="Fila_Asiento" />
+            <End Role="Asiento" EntitySet="Asiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_Horario_Asiento" Association="Self.FK_Asiento_Horario_Asiento">
+            <End Role="Asiento" EntitySet="Asiento" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_Horario_Horario" Association="Self.FK_Asiento_Horario_Horario">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Pelicula" Association="Self.FK_Horario_Pelicula">
+            <End Role="Pelicula" EntitySet="Pelicula" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Sala" Association="Self.FK_Horario_Sala">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Sede" Association="Self.FK_Sala_Sede">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Sala" EntitySet="Sala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarjeta_Credito_Usuario" Association="Self.FK_Tarjeta_Credito_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Horario" Association="Self.FK_Ticket_Horario">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cinemas2001Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asiento">
+          <Key>
+            <PropertyRef Name="ID_Asiento" />
+          </Key>
+          <Property Name="ID_Asiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Fila_Asiento" Type="Int32" Nullable="false" />
+          <Property Name="Num_Asiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fila_Asiento" Relationship="Self.FK_Asiento_Fila_Asiento" FromRole="Asiento" ToRole="Fila_Asiento" />
+          <NavigationProperty Name="Asiento_Horario" Relationship="Self.FK_Asiento_Horario_Asiento" FromRole="Asiento" ToRole="Asiento_Horario" />
+        </EntityType>
+        <EntityType Name="Asiento_Horario">
+          <Key>
+            <PropertyRef Name="id_Asiento_Horario" />
+          </Key>
+          <Property Name="id_Asiento_Horario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Asiento" Type="Int32" Nullable="false" />
+          <Property Name="id_Horario" Type="Int32" Nullable="false" />
+          <Property Name="Disponibilidad" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Asiento" Relationship="Self.FK_Asiento_Horario_Asiento" FromRole="Asiento_Horario" ToRole="Asiento" />
+          <NavigationProperty Name="Horario" Relationship="Self.FK_Asiento_Horario_Horario" FromRole="Asiento_Horario" ToRole="Horario" />
+        </EntityType>
+        <EntityType Name="Fila_Asiento">
+          <Key>
+            <PropertyRef Name="ID_Fila_Asiento" />
+          </Key>
+          <Property Name="ID_Fila_Asiento" Type="Int32" Nullable="false" />
+          <Property Name="Fila_Asiento1" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Asientoes" Relationship="Self.FK_Asiento_Fila_Asiento" FromRole="Fila_Asiento" ToRole="Asiento" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pelicula" Type="Int32" Nullable="false" />
+          <Property Name="fecha_horario" Type="Time" Nullable="false" Precision="4" />
+          <Property Name="id_sala" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Asiento_Horario" Relationship="Self.FK_Asiento_Horario_Horario" FromRole="Horario" ToRole="Asiento_Horario" />
+          <NavigationProperty Name="Pelicula" Relationship="Self.FK_Horario_Pelicula" FromRole="Horario" ToRole="Pelicula" />
+          <NavigationProperty Name="Sala" Relationship="Self.FK_Horario_Sala" FromRole="Horario" ToRole="Sala" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Horario" FromRole="Horario" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duracion" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Categoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Horarios" Relationship="Self.FK_Horario_Pelicula" FromRole="Pelicula" ToRole="Horario" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Sede" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Num_Sala" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Horarios" Relationship="Self.FK_Horario_Sala" FromRole="Sala" ToRole="Horario" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK_Sala_Sede" FromRole="Sala" ToRole="Sede" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Salas" Relationship="Self.FK_Sala_Sede" FromRole="Sede" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tarjeta_Credito">
+          <Key>
+            <PropertyRef Name="Numero_Tarjeta" />
+          </Key>
+          <Property Name="Numero_Tarjeta" Type="Int64" Nullable="false" />
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="CVO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Tarjeta_Credito_Usuario" FromRole="Tarjeta_Credito" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="id_Ticket" />
+          </Key>
+          <Property Name="id_Ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_Horario" Type="Int32" Nullable="false" />
+          <Property Name="nom_pelicula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="horario" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Horario1" Relationship="Self.FK_Ticket_Horario" FromRole="Ticket" ToRole="Horario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Ticket_Ticket" FromRole="Ticket" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="DNI" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tarjeta_Credito" Relationship="Self.FK_Tarjeta_Credito_Usuario" FromRole="Usuario" ToRole="Tarjeta_Credito" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Ticket" FromRole="Usuario" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="FK_Asiento_Fila_Asiento">
+          <End Role="Fila_Asiento" Type="Self.Fila_Asiento" Multiplicity="1" />
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fila_Asiento">
+              <PropertyRef Name="ID_Fila_Asiento" />
+            </Principal>
+            <Dependent Role="Asiento">
+              <PropertyRef Name="ID_Fila_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_Horario_Asiento">
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiento">
+              <PropertyRef Name="ID_Asiento" />
+            </Principal>
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_Horario_Horario">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Asiento_Horario" Type="Self.Asiento_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Asiento_Horario">
+              <PropertyRef Name="id_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Pelicula">
+          <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelicula">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="id_pelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Sala">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Horario">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="id_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Sede">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Sala" Type="Self.Sala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sala">
+              <PropertyRef Name="ID_Sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarjeta_Credito_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Tarjeta_Credito" Type="Self.Tarjeta_Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="Tarjeta_Credito">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Ticket">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cinemas2001Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asientoes" EntityType="Self.Asiento" />
+          <EntitySet Name="Asiento_Horario" EntityType="Self.Asiento_Horario" />
+          <EntitySet Name="Fila_Asiento" EntityType="Self.Fila_Asiento" />
+          <EntitySet Name="Horarios" EntityType="Self.Horario" />
+          <EntitySet Name="Peliculas" EntityType="Self.Pelicula" />
+          <EntitySet Name="Salas" EntityType="Self.Sala" />
+          <EntitySet Name="Sedes" EntityType="Self.Sede" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Asiento_Fila_Asiento" Association="Self.FK_Asiento_Fila_Asiento">
+            <End Role="Fila_Asiento" EntitySet="Fila_Asiento" />
+            <End Role="Asiento" EntitySet="Asientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_Horario_Asiento" Association="Self.FK_Asiento_Horario_Asiento">
+            <End Role="Asiento" EntitySet="Asientoes" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_Horario_Horario" Association="Self.FK_Asiento_Horario_Horario">
+            <End Role="Horario" EntitySet="Horarios" />
+            <End Role="Asiento_Horario" EntitySet="Asiento_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Pelicula" Association="Self.FK_Horario_Pelicula">
+            <End Role="Pelicula" EntitySet="Peliculas" />
+            <End Role="Horario" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Sala" Association="Self.FK_Horario_Sala">
+            <End Role="Sala" EntitySet="Salas" />
+            <End Role="Horario" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Horario" Association="Self.FK_Ticket_Horario">
+            <End Role="Horario" EntitySet="Horarios" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Sede" Association="Self.FK_Sala_Sede">
+            <End Role="Sede" EntitySet="Sedes" />
+            <End Role="Sala" EntitySet="Salas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarjeta_Credito_Usuario" Association="Self.FK_Tarjeta_Credito_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Cinemas2001ModelStoreContainer" CdmEntityContainer="Cinemas2001Entities">
+          <EntitySetMapping Name="Asientoes">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Asiento">
+              <MappingFragment StoreEntitySet="Asiento">
+                <ScalarProperty Name="ID_Asiento" ColumnName="ID_Asiento" />
+                <ScalarProperty Name="ID_Fila_Asiento" ColumnName="ID_Fila_Asiento" />
+                <ScalarProperty Name="Num_Asiento" ColumnName="Num_Asiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asiento_Horario">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Asiento_Horario">
+              <MappingFragment StoreEntitySet="Asiento_Horario">
+                <ScalarProperty Name="id_Asiento_Horario" ColumnName="id_Asiento_Horario" />
+                <ScalarProperty Name="id_Asiento" ColumnName="id_Asiento" />
+                <ScalarProperty Name="id_Horario" ColumnName="id_Horario" />
+                <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fila_Asiento">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Fila_Asiento">
+              <MappingFragment StoreEntitySet="Fila_Asiento">
+                <ScalarProperty Name="ID_Fila_Asiento" ColumnName="ID_Fila_Asiento" />
+                <ScalarProperty Name="Fila_Asiento1" ColumnName="Fila_Asiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horarios">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Horario">
+              <MappingFragment StoreEntitySet="Horario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pelicula" ColumnName="id_pelicula" />
+                <ScalarProperty Name="fecha_horario" ColumnName="fecha_horario" />
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Peliculas">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Pelicula">
+              <MappingFragment StoreEntitySet="Pelicula">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salas">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Sala">
+              <MappingFragment StoreEntitySet="Sala">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Sede" ColumnName="ID_Sede" />
+                <ScalarProperty Name="Num_Sala" ColumnName="Num_Sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sedes">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Sede">
+              <MappingFragment StoreEntitySet="Sede">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Cinemas2001Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarjeta_Credito">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Tarjeta_Credito">
+              <MappingFragment StoreEntitySet="Tarjeta_Credito">
+                <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="CVO" ColumnName="CVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+                <ScalarProperty Name="id_Horario" ColumnName="id_Horario" />
+                <ScalarProperty Name="nom_pelicula" ColumnName="nom_pelicula" />
+                <ScalarProperty Name="horario" ColumnName="horario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Cinemas2001Model.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

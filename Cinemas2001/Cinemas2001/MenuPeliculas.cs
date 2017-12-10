@@ -15,7 +15,6 @@ namespace Cinemas2001
     public partial class MenuPeliculas : Form
     {
         LN_Cinemas2001 iLN = new LN_Cinemas2001();
-        Boolean first = true;
 
         public MenuPeliculas()
         {
