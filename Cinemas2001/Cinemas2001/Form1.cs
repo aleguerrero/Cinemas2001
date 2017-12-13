@@ -26,22 +26,52 @@ namespace Cinemas2001
         {
             try
             {
-                MO_Usuario oUsuario = new MO_Usuario();
-                oUsuario.Username = txtUser.Text;
-                oUsuario.Contrasena = txtPass.Text;
-                MO_Usuario iUsuario = iLn_Login.fn_LoginUsuario(oUsuario);
-                if (iUsuario.Nombre != null)
+                string admin = txtUser.Text;
+                string pass = txtPass.Text;
+                if (admin == "Alejandro" && pass == "Ale123")
                 {
-                    MessageBox.Show("Bienvenido " + iUsuario.Nombre + " " + iUsuario.Apellidos, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Bienvenido, administrador " + admin, "Iniciar sesion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    MenuPrincipal menu = new MenuPrincipal();
-                    menu.ShowDialog();
+                    MenuAdmin men = new MenuAdmin();
+                    men.ShowDialog();
                     this.Close();
+                }
+                else if (admin == "Leonardo" && pass == "Leo123")
+                {
+                     MessageBox.Show("Bienvenido, administrador " + admin, "Iniciar sesion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     this.Hide();
+                     MenuAdmin men = new MenuAdmin();
+                     men.ShowDialog();
+                     this.Close();
+                }
+                else if (admin == "Daniel" && pass == "Dani123")
+                {
+                     MessageBox.Show("Bienvenido, administrador " + admin, "Iniciar sesion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     this.Hide();
+                     MenuAdmin vMenuAd = new MenuAdmin();
+                     vMenuAd.ShowDialog();
+                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MO_Usuario oUsuario = new MO_Usuario();
+                    oUsuario.Username = txtUser.Text;
+                    oUsuario.Contrasena = txtPass.Text;
+                    MO_Usuario iUsuario = iLn_Login.fn_LoginUsuario(oUsuario);
+                    if (iUsuario.Nombre != null)
+                    {
+                        MessageBox.Show("Bienvenido " + iUsuario.Nombre + " " + iUsuario.Apellidos, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        MenuPrincipal menu = new MenuPrincipal();
+                        menu.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                
             } catch (Exception y)
             {
                 MessageBox.Show("E R R O R", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);

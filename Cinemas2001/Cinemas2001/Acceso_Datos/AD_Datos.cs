@@ -427,5 +427,49 @@ namespace Cinemas2001.Acceso_Datos
                 }
             }
         }
+
+        public Pelicula fn_ConsultaPelicula(Pelicula pPelicula)
+        {
+            Pelicula sPelicula = new Pelicula();
+            using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+            {
+                try
+                {
+                    contexto.Database.Connection.Open();
+                    sPelicula = contexto.Peliculas.Where(c => c.Nombre == pPelicula.Nombre).First();
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            return sPelicula;
+
+        }
+
+        public Boolean fn_ActualizarPelicula(Pelicula pPelicula)
+        {
+
+            try
+            {
+                using (Cinemas2001Entities contexto = new Cinemas2001Entities())
+                {
+                    contexto.Database.Connection.Open();
+                    var PeliculaActualizar = contexto.Peliculas.Where(sPelicula => sPelicula.ID == pPelicula.ID).First();
+
+                    PeliculaActualizar.Nombre = pPelicula.Nombre;
+                    PeliculaActualizar.Categoria = pPelicula.Categoria;
+                    PeliculaActualizar.Duracion = pPelicula.Duracion;
+
+                    contexto.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
     }
 }

@@ -90,8 +90,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="formPelicula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPelicula.Designer.cs">
+      <DependentUpon>formPelicula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logica_Negocio\LN_Cinemas2001.cs" />
     <Compile Include="Logica_Negocio\Seguridad.cs" />
+    <Compile Include="MenuAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuAdmin.Designer.cs">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuClientecs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formPelicula.resx">
+      <DependentUpon>formPelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuAdmin.resx">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuClientecs.resx">
       <DependentUpon>MenuClientecs.cs</DependentUpon>

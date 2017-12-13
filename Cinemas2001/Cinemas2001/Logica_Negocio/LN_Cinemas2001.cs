@@ -220,5 +220,31 @@ namespace Cinemas2001.Logica_Negocio
                 return false;
             }
         }
+
+        public Boolean fn_ActualizarPelicula(MO_Pelicula pPelicula)
+        {
+            Pelicula sPelicula = new Pelicula();
+            sPelicula.ID = pPelicula.Id;
+            sPelicula.Nombre = pPelicula.Nombre;
+            sPelicula.Categoria = pPelicula.Categoria;
+            sPelicula.Duracion = pPelicula.Duracion;
+
+            return iAccesoDatos.fn_ActualizarPelicula(sPelicula);
+        }
+
+        public MO_Pelicula fn_ConsultarPelicula(MO_Pelicula pPelicula)
+        {
+            Pelicula iPelicula = new Pelicula();
+            iPelicula.Nombre = pPelicula.Nombre;
+            iPelicula = iAccesoDatos.fn_ConsultaPelicula(iPelicula);
+
+            MO_Pelicula sPelicula = new MO_Pelicula();
+            sPelicula.Id = iPelicula.ID;
+            sPelicula.Nombre = iPelicula.Nombre;
+            sPelicula.Categoria = iPelicula.Categoria;
+            sPelicula.Duracion = iPelicula.Duracion;
+
+            return sPelicula;
+        }
     }
 }
